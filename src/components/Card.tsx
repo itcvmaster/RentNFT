@@ -5,7 +5,6 @@ import ReactModal from 'react-modal';
 import { Icon15x15 } from './Icon';
 import Modal from './Modal';
 import { Setting } from '../pages';
-ReactModal.setAppElement("#root");
 
 const Card: React.FC<any> = (props: any) => {
   let [showSetting, setShowSetting] = useState(false)
