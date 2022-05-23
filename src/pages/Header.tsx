@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { HD, desktop, tablet, mobile, mobileSmall } from 'components/utils/constants'
-import { Search, Logo } from 'components';
+import { Search, Logo } from '../components';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();

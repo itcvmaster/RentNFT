@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { Logo } from 'components';
-import { Icon30x30 } from 'components/Icon';
+import { Logo } from '../components';
+import { Icon30x30 } from '../components/Icon';
 
 const Footer: React.FC = () => {
   return (

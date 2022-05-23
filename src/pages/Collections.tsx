@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 
-import { Filter, Card } from 'components';
+import { Filter, Card } from '../components';
 
 const Collections: React.FC<any> = (props: any) => {
   let [isCol, setIsCol] = useState(true);
@@ -35,7 +35,7 @@ const Container = styled.div`
 `
 
 const Content = styled.div`
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   display: grid;
   gap: 30px;
   padding: 10px;

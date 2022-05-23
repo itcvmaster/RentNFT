@@ -1,9 +1,17 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import ReactModal from 'react-modal';
+
 import { Icon15x15 } from './Icon';
+import Modal from './Modal';
+import { Setting } from '../pages';
+ReactModal.setAppElement("#root");
 
 const Card: React.FC<any> = (props: any) => {
+  let [showSetting, setShowSetting] = useState(false)
+
   return (
-    <Container>
+    <Container onClick = {() => setShowSetting(true)}>  
       <Img src="Nft/Vacation-Palette-Nft.jpg" />
       <Content>  
         <Title>{props.title}</Title>
@@ -38,6 +46,18 @@ const Card: React.FC<any> = (props: any) => {
           </ColInf>
         }
       </Content>
+      <ReactModal
+          isOpen={showSetting}
+          onRequestClose={() => setShowSetting(false)}
+          className="no-class"
+          overlayClassName="myoverlay"
+        >
+          <Modal
+            title="Bot Settings"
+            content={<Setting />}
+            onClose={() => setShowSetting(false)}
+          />
+        </ReactModal>
     </Container>
   );
 }

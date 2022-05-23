@@ -3,7 +3,7 @@ import { RouteObject, useRoutes } from 'react-router-dom';
 import {
   Market,
   Collections
-} from 'pages';
+} from '../pages';
 
 const routes: RouteObject[] = [
   {
