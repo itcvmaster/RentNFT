@@ -6,7 +6,7 @@ const Modal: React.FC<any> = (props) => {
     <Container>
       <Title>
         <Span>{props.title}</Span>
-        <Icon15x15 src="./icons/close.svg" onClick={props.onClose} />
+        <Icon15x15 src="icons/close.svg" onClick={props.onClose} />
       </Title>
       {props.content}
     </Container>

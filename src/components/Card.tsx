@@ -46,17 +46,17 @@ const Card: React.FC<any> = (props: any) => {
         }
       </Content>
       <ReactModal
-          isOpen={showSetting}
-          onRequestClose={() => setShowSetting(false)}
-          className="no-class"
-          overlayClassName="myoverlay"
-        >
-          <Modal
-            title="Bot Settings"
-            content={<Setting />}
-            onClose={() => setShowSetting(false)}
-          />
-        </ReactModal>
+        isOpen={showSetting}
+        onRequestClose={() => setShowSetting(false)}
+        className="no-class"
+        overlayClassName="myoverlay"
+      >
+        <Modal
+          title="Remt Settings"
+          content={<Setting />}
+          onClose={() => setShowSetting(false)}
+        />
+      </ReactModal>
     </Container>
   );
 }
