@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const Search: React.FC<any> = () => {
+const Search: React.FC<any> = (props:any) => {
   return (
     <Container>
-      <Input placeholder='Search items, collections, and accounts' />
+      <Input placeholder={props.text} />
     </Container>
   );
 }
@@ -16,7 +16,6 @@ const Input = styled.input`
   width: 100%;
   height: 36px;
   padding: 10px 30px;
-  background: var(--shade-7);
   border: 0;
   border-radius: var(--border-radius);
   font-weight: 400;

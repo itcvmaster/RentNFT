@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Search, Logo } from '../components';
+import { Search, Logo } from 'components';
 
-const Header: React.FC = () => {
+const Header: React.FC = (props:any) => {
   const navigate = useNavigate();
   return (
     <Container>
       <Logo />
-      <Search />
+      <Search text="Search items, collections, and accounts"/>
       <Section>
         <Menu onClick={() => navigate("/")} >
           Market

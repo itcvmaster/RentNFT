@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 
-import { Filter, Card } from '../components';
+import { Filter, Card } from 'components';
 
 const Collections: React.FC<any> = (props: any) => {
   let [isCol, setIsCol] = useState(true);

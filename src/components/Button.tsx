@@ -14,15 +14,17 @@ export const ButtonStyle = styled.button`
   diplay: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;  
-  height: 36px;
-  border: 1px solid var(--shade-6);
+  cursor: pointer;
+  width: 220px;
+  height: 44px;
+  border: 1px solid #E8EBED;
   box-sizing: border-box;
-  border-radius: 18px;
+  border-radius: 22px;
   background-color: transparent;
-  color: var(--shade-4);
-  font-size: 16px;
+  color: #707A83;
+  font-family: 'Pridi';
   font-weight: 400;
+  font-size: 20px;
   transition: 0.15s ease-in-out;
 
   :hover {
