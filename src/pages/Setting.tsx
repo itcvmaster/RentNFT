@@ -36,27 +36,31 @@ const Setting: React.FC<any> = (props) => {
             <Text>{cardInf.collateral}</Text>
           </Price>
         </RentSetting>
-        <Button1 text="Rent Now" /> 
+        <Button text="Rent Now" /> 
       </Selection2>    
     </Container>
   );
 }
+const Container = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+`;
 const Selection1 = styled.div`
   width: 50%;
   display: flex;
   justify-content: center;
 `;
-
 const Selection2 = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 20px;
-`;
-
-const Button1 = styled(Button)`
-  display: flex;
+  overflow-x: hidden;
+  overflow-y: auto;
 `;
 const Input = styled.input`
   box-sizing: border-box;
@@ -80,22 +84,15 @@ const Duration = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const Container = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  justify-content: center;
-  padding: 40px;
-`;
+
 const Img = styled.img`
   display: flex;
   width: 500px;
   height: 500px;
-`
+`;
 const TextGroup = styled.div`
   padding: 10px;
-`
-
+`;
 const Title = styled.div`
   font-family: 'Pridi';
   font-weight: 400;
@@ -103,7 +100,7 @@ const Title = styled.div`
   color: #000000;
   padding-top: 10px;
   padding-bottom: 10px;
-`
+`;
 const Text = styled.div`
   font-family: 'Pridi';
   font-weight: 400;
@@ -111,10 +108,10 @@ const Text = styled.div`
   color: #707A83;
   padding-top: 4px;
   padding-bottom: 4px;
-`
+`;
 const Price = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 export default Setting;
