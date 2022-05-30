@@ -10,18 +10,17 @@ const Card: React.FC<any> = (props: any) => {
   let [showSetting, setShowSetting] = useState(false)
 
   return (
-    <Container onClick={() => setShowSetting(true)}>
+    <Container>
       <Img
         src={props.imagePath}
         onClick={() => setShowSetting(true)}
       />
-      <Img src={props.imagePath} />
       <Content>
         <Title>{props.title}</Title>
-        {props.isMar &&
+        {props.isMarket &&
           <MarInf>
             <TextGroup>
-              <Text>{props.title}</Text>
+              <Text>{props.author}</Text>
               <Price>
                 <Text>Daily price:</Text>
                 <Text>{props.dailyPrice}</Text>
@@ -35,13 +34,13 @@ const Card: React.FC<any> = (props: any) => {
             <IconGroup>
               <Icon15x15 src="icons/ellipsis.svg" />
               <Switch onClick={() => {
-                props.setLike(!props.like);
+                props.setLiked(!props.isLiked);
                 if (props.onClick) props.onClick();
               }
               }>
                 <Icon15x15
                   src={
-                    props.like ?
+                    props.isLiked ?
                       "icons/heart-red.svg" :
                       "icons/heart.svg"
                   }
@@ -52,25 +51,35 @@ const Card: React.FC<any> = (props: any) => {
         }
         {props.isCol &&
           <ColInf>
+            <Icon15x15 src={props.imageIcon} />
             <Text>{props.text}</Text>
           </ColInf>
         }
       </Content>
-  <Modals>
-    <ReactModal
-      isOpen={showSetting}
-      onRequestClose={() => setShowSetting(false)}
-      className="no-class"
-      overlayClassName="myoverlay"
-    >
-      <Modal
-        title="Rent Settings"
-        content={<Setting />}
-        onClose={() => setShowSetting(false)}
-      />
-    </ReactModal>
-    <ModalStyles />
-  </Modals>
+      <Modals>
+        <ReactModal
+          isOpen={showSetting}
+          onRequestClose={() => setShowSetting(false)}
+          className="no-class"
+          overlayClassName="myoverlay"
+        >
+          <Modal
+            title="Rent Settings"
+            content={
+              <Setting
+                imagePath={props.imagePath}
+                author={props.author}
+                title={props.title}
+                describe={props.describe}
+                dailyPrice={props.dailyPrice}
+                collateral={props.collateral}
+              />
+            }
+            onClose={() => setShowSetting(false)}
+          />
+        </ReactModal>
+        <ModalStyles />
+      </Modals>
     </Container >
   );
 }

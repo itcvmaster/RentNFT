@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 import { Filter, Card } from 'components';
+import testData from './testData.json';
 
 const Collections: React.FC<any> = (props: any) => {
   let [isCol, setIsCol] = useState(true);
@@ -9,20 +10,16 @@ const Collections: React.FC<any> = (props: any) => {
     <Container>
       <Filter />
       <Content>
-        <Card  
-          title = 'vacation-palette-nft' 
-          isCol = {isCol} 
-          text = 'View on OpenSea' 
-        />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {testData.map(data => (
+          <Card  
+            imagePath={data.imagePath}
+            title={data.title} 
+            isCol = {isCol} 
+            imageIcon={data.imageIcon}
+            text={data.text}
+            describe={data.describe}
+          />
+        ))}
       </Content>
     </Container>
   );

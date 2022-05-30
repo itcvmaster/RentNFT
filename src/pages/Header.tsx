@@ -56,6 +56,7 @@ const Menu = styled.button`
   :hover {
     color: var(--hover);
   }
+  
 `;
 
 export default Header;

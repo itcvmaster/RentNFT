@@ -1,26 +1,19 @@
-import { Button } from "components";
 import styled from "styled-components";
 
-const cardInf = {
-  bigTitle: "Vacation Palette NFT #198",
-  smallTitle : "vacation-palette-nft",
-  dailyPrice : "20DAI",
-  collateral : "500DAI",
-  state : "Available",
-  describe: "Vacation Palette NFT is a collection of 300 user-generated HTML canvas art pieces on Ethereum."
-};
+import { Button } from "components";
+import testData from './testData.json';
 
 const Setting: React.FC<any> = (props) => {
   return (
     <Container>
       <Selection1>
-        <Img src = "Nft/Vacation-Palette-Nft.jpg" />
+        <Img src = {props.imagePath} />
       </Selection1>
       <Selection2>
         <TextGroup>
-          <Text>{cardInf.smallTitle}</Text>
-          <Title>{cardInf.bigTitle}</Title>
-          <Text>{cardInf.describe}</Text>
+          <Text>{props.author}</Text>
+          <Title>{props.title}</Title>
+          <Text>{props.describe}</Text>
         </TextGroup> 
         <RentSetting>
           <Duration>
@@ -29,11 +22,11 @@ const Setting: React.FC<any> = (props) => {
           </Duration>
           <Price>
             <Text>Daily price</Text>
-            <Text>{cardInf.dailyPrice}</Text>
+            <Text>{props.dailyPrice}</Text>
           </Price>
           <Price>
             <Text>Collateral</Text>
-            <Text>{cardInf.collateral}</Text>
+            <Text>{props.collateral}</Text>
           </Price>
         </RentSetting>
         <Button text="Rent Now" /> 

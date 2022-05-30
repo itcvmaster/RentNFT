@@ -14,13 +14,15 @@ const Market: React.FC<any> = (props: any) => {
         {testData.map(data => (
           <Card
             imagePath={data.imagePath}
-            isMar={isMarket}
+            isMarket={isMarket}
             title={data.title}
+            author={data.author}
             dailyPrice={data.dailyPrice}
             collateral={data.collateralPrice}
             state={data.state}
-            like={data.isLiked}
-            setLike={setLiked}
+            isLiked={data.isLiked}
+            setLiked={setLiked}
+            describe={data.describe}
           />
         ))}
       </Content>
