@@ -1,0 +1,12 @@
+[
+    {
+        "imagePath": "https://openseauserdata.com/files/94e937f59f76b79fac37fa61f52dfc9b.svg",
+        "author": "zorbs-v2",
+        "title": "Zorb #13132",
+        "state": "Available",
+        "isLiked": true,
+        "dailyPrice": 0.05,
+        "collateralPrice": 1,
+        "priceUnit": "WETH"
+    }
+]
