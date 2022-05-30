@@ -10,60 +10,68 @@ const Card: React.FC<any> = (props: any) => {
   let [showSetting, setShowSetting] = useState(false)
 
   return (
-    <Container>  
-      <Img 
-        src="Nft/Vacation-Palette-Nft.jpg" 
-        onClick = {() => setShowSetting(true)}
+    <Container onClick={() => setShowSetting(true)}>
+      <Img
+        src={props.imagePath}
+        onClick={() => setShowSetting(true)}
       />
-      <Content>  
+      <Img src={props.imagePath} />
+      <Content>
         <Title>{props.title}</Title>
-        {props.isMar && <MarInf>
-          <TextGroup>
-            <Text>{props.title}</Text>
-            <Price>
-              <Text>Daily price:</Text>
-              <Text>{props.dailyPrice}</Text>
-            </Price>
-            <Price>
-              <Text>Collateral:</Text>
-              <Text>{props.collateral}</Text>
-            </Price>
-            <Text>{props.state}</Text>    
-          </TextGroup>
-          <IconGroup>
-            <Icon15x15 src = "icons/ellipsis.svg"/>
-            <Switch onClick = {() => {
+        {props.isMar &&
+          <MarInf>
+            <TextGroup>
+              <Text>{props.title}</Text>
+              <Price>
+                <Text>Daily price:</Text>
+                <Text>{props.dailyPrice}</Text>
+              </Price>
+              <Price>
+                <Text>Collateral:</Text>
+                <Text>{props.collateral}</Text>
+              </Price>
+              <Text>{props.state}</Text>
+            </TextGroup>
+            <IconGroup>
+              <Icon15x15 src="icons/ellipsis.svg" />
+              <Switch onClick={() => {
                 props.setLike(!props.like);
                 if (props.onClick) props.onClick();
               }
-            }>
-              {props.like && <Icon15x15 src = "icons/heart-red.svg"/>}
-              {!props.like && <Icon15x15 src = "icons/heart.svg"/>}
-            </Switch>
-          </IconGroup>  
-        </MarInf >
+              }>
+                <Icon15x15
+                  src={
+                    props.like ?
+                      "icons/heart-red.svg" :
+                      "icons/heart.svg"
+                  }
+                />
+              </Switch>
+            </IconGroup>
+          </MarInf >
         }
-        {props.isCol && <ColInf>
-            <Text>{props.text}</Text> 
+        {props.isCol &&
+          <ColInf>
+            <Text>{props.text}</Text>
           </ColInf>
         }
       </Content>
-      <Modals>
-        <ReactModal
-          isOpen={showSetting}
-          onRequestClose={() => setShowSetting(false)}
-          className="no-class"
-          overlayClassName="myoverlay"
-        >
-          <Modal
-            title="Rent Settings"
-            content={<Setting />}
-            onClose={() => setShowSetting(false)}
-          />
-        </ReactModal>
-        <ModalStyles />
-      </Modals>
-    </Container>
+  <Modals>
+    <ReactModal
+      isOpen={showSetting}
+      onRequestClose={() => setShowSetting(false)}
+      className="no-class"
+      overlayClassName="myoverlay"
+    >
+      <Modal
+        title="Rent Settings"
+        content={<Setting />}
+        onClose={() => setShowSetting(false)}
+      />
+    </ReactModal>
+    <ModalStyles />
+  </Modals>
+    </Container >
   );
 }
 

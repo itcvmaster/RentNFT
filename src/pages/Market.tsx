@@ -2,39 +2,27 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 import { Filter, Card } from 'components';
-
-const cardInf = {
-  title : "vacation-palette-nft",
-  dailyPrice : "20DAI",
-  collateral : "500DAI",
-  state : "Available"
-};
+import testData from './testData.json';
 
 const Market: React.FC<any> = (props: any) => {
-  let [isMar, setIsMar] = useState(true);
-  let [like, setLike] = useState(false);
+  let [isMarket, setMarket] = useState(true);
+  let [isLiked, setLiked] = useState(false);
   return (
     <Container>
       <Filter />
       <Content>
-        <Card
-          isMar = {isMar}  
-          title = {cardInf.title}
-          dailyPrice = {cardInf.dailyPrice}
-          collateral = {cardInf.collateral}
-          state = {cardInf.state}
-          like = {like}
-          setLike = {setLike}
-        />
-        <Card />
-        <Card />  
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {testData.map(data => (
+          <Card
+            imagePath={data.imagePath}
+            isMar={isMarket}
+            title={data.title}
+            dailyPrice={data.dailyPrice}
+            collateral={data.collateralPrice}
+            state={data.state}
+            like={data.isLiked}
+            setLike={setLiked}
+          />
+        ))}
       </Content>
     </Container>
   );
