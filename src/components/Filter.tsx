@@ -1,18 +1,35 @@
 import styled from 'styled-components';
 
 import Selector from './Selector';
+import { CollateralSelectNames, StateSelectNames, SortSelectNames, PriceRangeSelectNames } from "utils";
 
 const Filter: React.FC<any> = (props: any) => {
 
   return (
     <Container>
       <Content1>
-        <Selector  text = 'Collateral type' />  
-        <Selector  text = 'State' />  
-        <Selector  text = 'Price Range' /> 
+        <Selector 
+          selects = {CollateralSelectNames} 
+          text = 'Collateral type' 
+          value = 'All' 
+        />  
+        <Selector
+          selects = {StateSelectNames} 
+          text = 'State' 
+          value = 'All' 
+        />  
+        <Selector
+          selects = {PriceRangeSelectNames}
+          text = 'Price Range' 
+          value = 'All' 
+        />
       </Content1>  
       <Content2>
-        <Selector  text = 'Sort' />
+        <Selector
+          selects = {SortSelectNames} 
+          text = 'Sort' 
+          value = '' 
+        />
       </Content2>  
     </Container>
   )

@@ -1,187 +1,118 @@
+import styled from 'styled-components';
 import { useState } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import ReactModal from 'react-modal';
 
 import { Icon15x15 } from './Icon';
 import Modal from './Modal';
-import { Setting } from '../pages';
 
-const Card: React.FC<any> = (props: any) => {
-  let [showSetting, setShowSetting] = useState(false)
-
+export const MarketCard: React.FC<any> = (props: any) => {
+  let [showModal, setShowModal] = useState(false)
   return (
     <Container>
       <Img
         src={props.imagePath}
-        onClick={() => setShowSetting(true)}
+        onClick={() => setShowModal(true)}
       />
       <Content>
         <Title>{props.title}</Title>
-        {props.isMarket &&
-          <MarInf>
-            <TextGroup>
-              <Text>{props.author}</Text>
-              <Price>
-                <Text>Daily price:</Text>
-                <Text>{props.dailyPrice}</Text>
-              </Price>
-              <Price>
-                <Text>Collateral:</Text>
-                <Text>{props.collateral}</Text>
-              </Price>
-              <Text>{props.state}</Text>
-            </TextGroup>
-            <IconGroup>
-              <Icon15x15 src="icons/ellipsis.svg" />
-              <Switch onClick={() => {
-                props.setLiked(!props.isLiked);
-                if (props.onClick) props.onClick();
-              }
-              }>
-                <Icon15x15
-                  src={
-                    props.isLiked ?
-                      "icons/heart-red.svg" :
-                      "icons/heart.svg"
-                  }
-                />
-              </Switch>
-            </IconGroup>
-          </MarInf >
-        }
-        {props.isCol &&
-          <ColInf>
-            <Icon15x15 src={props.imageIcon} />
-            <Text>{props.text}</Text>
-          </ColInf>
-        }
+        <Line>{props.author}</Line>
+        <Line>
+          Daily Price
+          <div>
+            {props.dailyPrice}
+            {props.priceUnit}
+          </div>
+        </Line>
+        <Line>
+          Collateral
+          <div>
+            {props.collateralPrice}
+            {props.priceUnit}
+          </div>
+        </Line>
+        <Line>
+          {props.state}
+          <div style={{ display: "flex", gap: "10px" }}>
+            <Icon15x15 src="icons/ellipsis.svg" />
+            <Icon15x15 src={props.isLiked ? "icons/heart-red.svg" : "icons/heart.svg"} />
+          </div>
+        </Line>
       </Content>
-      <Modals>
-        <ReactModal
-          isOpen={showSetting}
-          onRequestClose={() => setShowSetting(false)}
-          className="no-class"
-          overlayClassName="myoverlay"
-        >
-          <Modal
-            title="Rent Settings"
-            content={
-              <Setting
-                imagePath={props.imagePath}
-                author={props.author}
-                title={props.title}
-                describe={props.describe}
-                dailyPrice={props.dailyPrice}
-                collateral={props.collateral}
-              />
-            }
-            onClose={() => setShowSetting(false)}
-          />
-        </ReactModal>
-        <ModalStyles />
-      </Modals>
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        imagePath={props.imagePath}
+        title={props.title}
+        author={props.author}
+        dailyPrice={props.dailyPrice}
+        collateralPrice={props.collateralPrice}
+        priceUnit={props.priceUnit}
+        state={props.state}
+        describe={props.describe}
+      />
     </Container >
   );
 }
+export const CollectionCard: React.FC<any> = (props: any) => {
 
-const Modals = styled.div`
-  z-index: 10;
-  box-sizing: border-box;
-`;
-const ModalStyles = createGlobalStyle`
-  .myoverlay {
-    z-index: 10;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(111, 111, 111, 0.5);
-  }
-
-  .ReactModal__Overlay {
-    opacity: 0;
-    transition: opacity 400ms ease-in-out;
-  }
-
-  .ReactModal__Overlay--after-open {
-    opacity: 1;
-  }
-  `;
+  return (
+    <Container>
+      <Img src={props.imagePath} />
+      <Content>
+        <Title>{props.author}</Title>
+        <Opensea
+          href={'https://opensea.io/collection/' + props.author}
+          target="_blank"
+        >
+          <Icon15x15 src="icons/opensea.svg" />
+          <Line>View on OpenSea</Line>
+        </Opensea>
+      </Content>
+    </Container >
+  );
+}
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 36px #e4e4e4;
-  border-radius: 22px;
+  border-radius: var(--border-radius);
 `
-
-const Content = styled.div`
-  padding-top: 15px;
-  padding-bottom: 23px;
-  padding-right: 23px;
-  padding-left: 23px;
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-`
-
 const Img = styled.img`
   width: 100%;
   max-width: none;
   aspect-ratio: 1;
-  border-top-right-radius: 22px;
-  border-top-left-radius: 22px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
   cursor: pointer;
 `
-
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 20px 20px 20px;
+  box-sizing: border-box;
+`
 const Title = styled.div`
-  font-family: 'Pridi';
-  font-weight: 400;
+  font-weight: 600;
   font-size: 16px;
-  color: #000000;
-  display: flex;    
+  color: var(--shade-0);
+  display: flex;
   align-items: center;
   justify-content: center;
 `
-
-const Price = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-
-const MarInf = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-
-const ColInf = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-const IconGroup = styled.div`
-  display: flex;
-  align-items: flex-end;
-  gap: 16px;
-`
-
-const Switch = styled.div`
-  display: flex;
-`
-
-const TextGroup = styled.div`
-  font-family: 'Pridi';
-  font-weight: 400;
-  font-size: 16px;
-  color: #000000;
-`
-const Text = styled.div`
-  font-family: 'Pridi';
+const Line = styled.div`
   font-weight: 400;
   font-size: 14px;
-  color: #707A83;
+  color: var(--shade-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+`
+const Opensea = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 `
 
-export default Card;
+
+

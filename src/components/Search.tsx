@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Search: React.FC<any> = (props:any) => {
   return (
     <Container>
-      <Input placeholder={props.text} />
+      <Input placeholder="Search items, collections, and accounts" />
     </Container>
   );
 }
@@ -19,7 +19,7 @@ const Input = styled.input`
   border: 0;
   border-radius: var(--border-radius);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
 `;
 
 

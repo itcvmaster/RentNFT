@@ -15,16 +15,15 @@ export const ButtonStyle = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  width: 220px;
-  height: 44px;
-  border: 1px solid #E8EBED;
+  width: 180px;
+  height: 36px;
+  border: 1px solid var(--shade-4);
   box-sizing: border-box;
-  border-radius: 22px;
+  border-radius: 18px;
   background-color: transparent;
-  color: #707A83;
-  font-family: 'Pridi';
+  color: var(--shade-4);
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   transition: 0.15s ease-in-out;
 
   :hover {

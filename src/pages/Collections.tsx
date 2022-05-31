@@ -1,23 +1,18 @@
 import styled from 'styled-components';
-import { useState } from 'react';
 
-import { Filter, Card } from 'components';
-import testData from './testData.json';
+import { Filter, CollectionCard } from 'components';
+import testData from '../utils/testData.json';
 
-const Collections: React.FC<any> = (props: any) => {
-  let [isCol, setIsCol] = useState(true);
+const Collections: React.FC<any> = () => {
   return (
     <Container>
       <Filter />
       <Content>
-        {testData.map(data => (
-          <Card  
+        {testData.map((data, index) => (
+          <CollectionCard
+            key={index}
             imagePath={data.imagePath}
-            title={data.title} 
-            isCol = {isCol} 
-            imageIcon={data.imageIcon}
-            text={data.text}
-            describe={data.describe}
+            author={data.author}
           />
         ))}
       </Content>
@@ -28,6 +23,7 @@ const Collections: React.FC<any> = (props: any) => {
 const Container = styled.div`
   display: block;
   padding: var(--padding);
+  padding-bottom: 50px;
   box-sizing: border-box;
 `
 

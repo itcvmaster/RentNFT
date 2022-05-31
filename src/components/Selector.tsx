@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import Icon from "./Icon";
 
+
 const Selector: React.FC<any> = (props) => {
 
   const defaultName: any = props.value;
@@ -45,7 +46,7 @@ const Selector: React.FC<any> = (props) => {
               onClick={() => onSelect(select)}
               key = {select}
             >
-              <span>{select}</span>
+              <Text>{select}</Text>
             </Select>
           )}
         </SelectList>
@@ -76,7 +77,7 @@ const Default = styled.div<{$isOpen:boolean}>`
   height: 36px;
   border: 1px solid #E8EBED;
   box-sizing: border-box;
-  border-radius: 22px;
+  border-radius: 18px;
   background-color: transparent;
   color: #707A83;
   align-items: center;
@@ -88,14 +89,13 @@ const Default = styled.div<{$isOpen:boolean}>`
 `
 
 const Text = styled.div`
-
 `
 
 const SelectList = styled.div`
   z-index: 2;
   position: absolute;
   width: 220px;
-  height: 72px;
+  height: auto;
   display: block;
   box-sizing: border-box;
   background-color: #FFFFFF;  
