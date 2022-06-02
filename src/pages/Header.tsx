@@ -7,7 +7,7 @@ import { Icon30x30 } from 'components/Icon';
 const Header: React.FC = () => {
   const navigate = useNavigate();
   return (
-    <Container>
+    <Container id="sticky-header">
       <Logo />
       <Section>
         <Menu onClick={() => navigate("/")} >

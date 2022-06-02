@@ -129,6 +129,7 @@ const Input = styled.input`
   font-size: 14px;
   width: 50%;
   padding: 5px 10px;
+  text-align: right;
 `;
 const Block = styled.div`
   display: flex;
