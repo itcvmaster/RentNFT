@@ -7,7 +7,8 @@ import { useMemo, useState } from 'react';
 
 const Market: React.FC<any> = () => {
   const id = useParams().id || "";
-  const [filterData, setFilterData] = useState(data);
+  const [searchData, setSearchData] = useState(data);
+  const [filterData, setFilterData] = useState(searchData);
 
   const renderData = useMemo(() => {
     if (id === "") return filterData;
@@ -24,8 +25,10 @@ const Market: React.FC<any> = () => {
     <Container>
       <Filter
         data={data}
-        filterData={filterData}
+        searchData={searchData}
+        setSearchData={setSearchData}
         setFilterData={setFilterData}
+        isMarket={true}
       />
       <Content>
         {renderData.map((_data, index) => (

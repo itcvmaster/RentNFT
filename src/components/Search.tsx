@@ -21,7 +21,7 @@ const Input = styled.input`
   box-sizing: border-box;
   width: 400px;
   ${mobileSmall} {
-    width: 200px;
+    width: 220px;
   }
   height: 36px;
   border: 1px solid var(--shade-6);

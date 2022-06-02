@@ -24,7 +24,11 @@ export const SortSelectNames = [
   "Newest",
   "Oldest",
   "Low to High Price",
-  "High to Low Price"
+  "High to Low Price",
+  "Low to High Collateral",
+  "High to Low Collateral",
+  "Alphabetically A-Z",
+  "Alphabetically Z-A"
 ];
 
 export const FacebookUrl = "https://twitter.com/renftlabs";

@@ -5,16 +5,13 @@ import Icon from "./Icon";
 
 
 const Selector: React.FC<any> = (props) => {
-
-  const defaultName: any = props.value;
-  const selects: Array<any> = props.selects;
+  const { selects, text, selectName, setSelectName } = props;
   let [opened, setOpened] = useState(false);
-  let [selectName, setSelectName] = useState(defaultName);
 
   const selector: any = useRef(null);
   const onClickOutside = (e: any) => {
     if (!selector || !selector?.current) return;
-    
+
     if (!selector.current.contains(e.target)) {
       setOpened(false);
     }
@@ -33,10 +30,10 @@ const Selector: React.FC<any> = (props) => {
 
   return (
     <Container ref={selector}>
-      <Title> {props.text} </Title>
-      <Default onClick={() => setOpened(!opened)} $isOpen={opened}>
+      <Title> {text} </Title>
+      <Default onClick={() => setOpened(!opened)}>
         <Text>{selectName}</Text>
-        {!opened && <Icon src="icons/select-black.svg" />}
+        <Icon src="icons/select-black.svg" />
       </Default>
 
       {opened &&
@@ -44,21 +41,21 @@ const Selector: React.FC<any> = (props) => {
           {selects && selects.map((select: any) =>
             <Select
               onClick={() => onSelect(select)}
-              key = {select}
+              key={select}
             >
               <Text>{select}</Text>
             </Select>
           )}
         </SelectList>
       }
-    </Container>  
+    </Container>
   );
 }
 
 const Container = styled.div`
   user-select: none;
   display: block;
-  width: 200px;
+  width: 220px;
   box-sizing: border-box;
 `
 
@@ -69,7 +66,7 @@ const Title = styled.div`
   padding-left: 18px;
 `;
 
-const Default = styled.div<{$isOpen:boolean}>`
+const Default = styled.div`
   z-index: 2;
   cursor: pointer;  
   display: flex;
@@ -83,9 +80,6 @@ const Default = styled.div<{$isOpen:boolean}>`
   align-items: center;
   justify-content: space-between;
   padding: 0 18px;
-  border-bottom-width: ${({$isOpen})=>$isOpen? "0px":"1px"};
-  border-bottom-left-radius: ${({$isOpen})=>$isOpen? "0px":"18px"};
-  border-bottom-right-radius: ${({$isOpen})=>$isOpen? "0px":"18px"};
 `
 
 const Text = styled.div`
@@ -94,15 +88,13 @@ const Text = styled.div`
 const SelectList = styled.div`
   z-index: 2;
   position: absolute;
-  width: 200px;
+  width: 220px;
   height: auto;
   display: block;
   box-sizing: border-box;
   background-color: var(--shade-8);  
   border: 1px solid var(--shade-6);
-  border-radius: 22px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
+  border-radius: 18px;
 `
 
 const Select = styled.div`

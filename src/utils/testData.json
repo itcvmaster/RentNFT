@@ -5,7 +5,7 @@
     "title": "Zorb #13132",
     "state": "Available",
     "dailyPrice": 0.05,
-    "collateralPrice": 1,
+    "collateralPrice": 0,
     "priceUnit": "WETH",
     "describe": "Zorbs were distributed for free by ZORA on New Year’s 2022. Each NFT imbues the properties of its wallet holder, and when sent to someone else, will transform. View this NFT at zorb.dev/nft/13132"
   },
@@ -23,7 +23,7 @@
     "imagePath": "https://lh3.googleusercontent.com/upIlx9X-DJQjdWOHoqTAhfwPnbRxHC_UW7NEoaQfNpP7PydWQ15e8m7KV5snR5CbhtFBk0PzMw2YgoGEpiFIcJ6IEECpBG7OU7QZ=s250",
     "author": "Cyberzuki2077",
     "title": "Cyberzuki #37",
-    "state": "Available",
+    "state": "Rented",
     "dailyPrice": 1,
     "collateralPrice": 100,
     "priceUnit": "DAI",

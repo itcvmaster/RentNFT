@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Filter, CollectionCard } from 'components';
@@ -18,12 +18,19 @@ const Collections: React.FC<any> = () => {
     }
     return newsArr;
   }, [])
-
+  const [searchData, setSearchData] = useState(data);
+  const [filterData, setFilterData] = useState(collectionData);
   return (
     <Container>
-      <Filter />
+      <Filter
+        data={collectionData}
+        searchData={searchData}
+        setSearchData={setSearchData}
+        setFilterData={setFilterData}
+        isMarket={false}
+      />
       <Content>
-        {collectionData.map((_data, index) => (
+        {filterData.map((_data, index) => (
           <CollectionCard
             key={index}
             imagePath={_data.imagePath}

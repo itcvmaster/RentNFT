@@ -27,6 +27,7 @@ const Header: React.FC = () => {
 
 const Container = styled.div`
   position: fixed;
+  z-index: 3;
   top: 0;
   box-sizing: border-box;
   width: 100%;
