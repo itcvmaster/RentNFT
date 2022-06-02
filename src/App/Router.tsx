@@ -21,6 +21,11 @@ const routes: RouteObject[] = [
     element: <Collections />,
     children: [],
   },
+  {
+    path: "/Collections/:id",
+    element: <Market />,
+    children: [],
+  },
 ];
 
 const Router: React.FC = () => {

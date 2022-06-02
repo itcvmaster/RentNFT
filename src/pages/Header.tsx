@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { tablet, mobile, mobileSmall } from 'utils/constants'
-import { Search, Logo } from 'components';
+import { mobile, mobileSmall } from 'utils'
+import { Logo } from 'components';
 import { Icon30x30 } from 'components/Icon';
 
 const Header: React.FC = () => {
@@ -9,7 +9,6 @@ const Header: React.FC = () => {
   return (
     <Container>
       <Logo />
-      <SearchBar />
       <Section>
         <Menu onClick={() => navigate("/")} >
           Maket
@@ -42,17 +41,14 @@ const Container = styled.div`
   gap: 20px;
 `;
 
-const SearchBar = styled(Search)`
-  ${mobile}, ${mobileSmall} {
-    display: none;
-  }
-`
-
 const Section = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
-  gap: 30px;
+  gap: 50px;
+  ${mobile} {
+    gap: 20px;
+  }
 `;
 
 const Menu = styled.button`
@@ -60,20 +56,19 @@ const Menu = styled.button`
   font-size: 18px;
   border: 0;
   cursor: pointer;
-  white-space: nowrap;
   background: transparent;
   color: var(--shade-7);
   :hover {
     color: var(--hover);
   }
-  ${tablet} {
+  ${mobileSmall} {
     display: none;
   }
 `;
 
 const HidenMenuIcon = styled(Icon30x30)`
   display: none;
-  ${tablet}, ${mobile}, ${mobileSmall} {
+  ${mobileSmall} {
     display: block;
   }
 `

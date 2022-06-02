@@ -3,7 +3,8 @@ import ReactModal from 'react-modal';
 
 import { Icon30x30 } from './Icon';
 import { Button } from "components";
-import { mobile, mobileSmall } from 'utils/constants'
+import { mobile, mobileSmall } from 'utils'
+ReactModal.setAppElement("#root");
 
 const Modal: React.FC<any> = (props) => {
   return (
@@ -14,11 +15,11 @@ const Modal: React.FC<any> = (props) => {
         onRequestClose={() => props.setShowModal(false)}
         overlayClassName="myoverlay"
         className="mycontent"
-        ariaHideApp={false}
       >
         <Container>
           <Title>
-            <Span>{props.title}</Span>
+            <Icon30x30 src="icons/logo.svg" />
+            <Span>Renting Details</Span>
             <Icon30x30
               src="icons/close.svg"
               onClick={() => props.setShowModal(false)}
@@ -89,8 +90,9 @@ const Title = styled.div`
   justify-content: space-between;
   align-items: center;
   background: var(--blue);
-  height: 40px;
-  padding: 20px;
+  height: 60px;
+  box-sizing: border-box;
+  padding: 0 20px;
 `;
 const Content = styled.div`
   display: flex;  

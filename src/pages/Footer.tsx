@@ -1,22 +1,37 @@
 import styled from 'styled-components';
 
-import { Logo } from 'components';
 import { Icon30x30 } from 'components/Icon';
+import { FacebookUrl, TwitterUrl, LinkedinUrl } from 'utils';
 
 const Footer: React.FC = () => {
   return (
     <FooterBar>
-      <Section1>
-        <Logo />
-        <Copyright>
-          © NFTLAND, Inc. All rights reserved.
-        </Copyright>
-      </Section1>
-      <Section2>
-        <Icon30x30 src="icons/facebook.svg" />
-        <Icon30x30 src="icons/twitter.svg" />
-        <Icon30x30 src="icons/linkedin.svg" />
-      </Section2>
+      <Copyright>
+        © NFTLAND, Inc. All rights reserved.
+      </Copyright>
+      <Section>
+        <a
+          href={FacebookUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Icon30x30 src="icons/facebook.svg" />
+        </a>
+        <a
+          href={TwitterUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Icon30x30 src="icons/twitter.svg" />
+        </a>
+        <a
+          href={LinkedinUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Icon30x30 src="icons/linkedin.svg" />
+        </a>
+      </Section>
     </FooterBar>
   );
 }
@@ -24,35 +39,26 @@ const Footer: React.FC = () => {
 const FooterBar = styled.div`
   box-sizing: border-box;
   width: 100%;
-  height: 70px;
+  height: 100px;
+  flex-direction: column;
+  padding: 0;
+  justify-content: center;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  padding: var(--padding);
   background: var(--blue);
   color: var(--shade-8);
   gap: 20px;
 `;
-
-const Section1 = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  gap: 80px;
-`
-
-const Section2 = styled.div`
+const Section = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
   gap: 10px;
-`
+`;
 const Copyright = styled.span`
   font-weight: 300;
   font-size: 16px;
   color: var(--shade-6);
-`
-
+`;
 
 export default Footer

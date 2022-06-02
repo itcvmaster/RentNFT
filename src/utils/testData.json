@@ -40,6 +40,16 @@
     "describe": "Timeless Ape Club is a collection of 5555 unique, algorithmically generated Timeless Apes, uniting watch fanatics globally. Our core mission is to bridge the physical world and the virtual metaverse with our exclusive NFT collection."
   },
   {
+    "imagePath": "https://lh3.googleusercontent.com/s0wWMtpedaN-IRG4kYrUQ8xdpu0-MB9vlV1cfWXAyINIbhGvAdlgo8MjBKH7W5iqrybtQOwwQ3kQ3N9FXVHDJAOs45jjc28DOQBMQg=s250",
+    "author": "zora",
+    "title": "Pony",
+    "state": "Available",
+    "dailyPrice": 1,
+    "collateralPrice": 15,
+    "priceUnit": "USDC",
+    "describe": ""
+  },
+  {
     "imagePath": "https://lh3.googleusercontent.com/2oPrZenrx03xMPT6TWe11N1aEOoGTX5i-aUo9WORlXIqRnPCQL4Z6CvjBe8b9dsJeatcHRfZ-oHI8tEx96e8GT8ptxneSWZyDCnMYg=s250",
     "author": "vacation-palette-nft",
     "title": "Vacation Palette NFT #198",
@@ -48,6 +58,26 @@
     "collateralPrice": 500,
     "priceUnit": "DAI",
     "describe": "Vacation Palette NFT is a collection of 300 user-generated HTML canvas art pieces on Ethereum.Vacation Palette NFT is a collection of 300 user-generated HTML canvas art pieces on Ethereum."
+  },
+  {
+    "imagePath": "https://lh3.googleusercontent.com/NBG-M-DV87izSgwhJYfHBBje9xQTugLLzTBPRoLLOmI3ScJ2tv69IDLiNkZjHKyr1kI1LO80S6rnUdeidsclQUoyj7a0MbGKIiIWHds=s250",
+    "author": "zora",
+    "title": "Misaka",
+    "state": "Available",
+    "dailyPrice": 1,
+    "collateralPrice": 15,
+    "priceUnit": "USDC",
+    "describe": ""
+  },
+  {
+    "imagePath": "https://lh3.googleusercontent.com/HMdoJBZJAcKDq6ysKupaWgIX8X4VBpbIyuxG41zAj5kWLKtw2QI0nhtpwyLO4X_NdUDvVT7fpdeFtduIs1SX1SrfKd5rPuUSPTOarGA=s250",
+    "author": "zora",
+    "title": "Sora Light",
+    "state": "Available",
+    "dailyPrice": 1,
+    "collateralPrice": 15,
+    "priceUnit": "USDC",
+    "describe": ""
   },
   {
     "imagePath": "https://lh3.googleusercontent.com/TztKdQ2ilX_yT2y4R_znt0D8WFgWTz2sGebZqkarpxKaVB8Pm1jrq9M_hAZtASqXXpeSa4a0DSa67ezUBkSlgqI3AfTiPhVjF9krlA=s250",

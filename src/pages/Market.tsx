@@ -1,24 +1,44 @@
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 
 import { Filter, MarketCard } from 'components';
-import testData from '../utils/testData.json';
+import data from '../utils/testData.json';
+import { useMemo, useState } from 'react';
 
 const Market: React.FC<any> = () => {
+  const id = useParams().id || "";
+  const [filterData, setFilterData] = useState(data);
+
+  const renderData = useMemo(() => {
+    if (id === "") return filterData;
+    else {
+      let tempArr = [];
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].author === id) tempArr.push(data[i]);
+      }
+      return tempArr;
+    }
+  }, [id, filterData])
+
   return (
     <Container>
-      <Filter />
+      <Filter
+        data={data}
+        filterData={filterData}
+        setFilterData={setFilterData}
+      />
       <Content>
-        {testData.map((data, index) => (
+        {renderData.map((_data, index) => (
           <MarketCard
             key={index}
-            imagePath={data.imagePath}
-            title={data.title}
-            author={data.author}
-            dailyPrice={data.dailyPrice}
-            collateralPrice={data.collateralPrice}
-            priceUnit={data.priceUnit}
-            state={data.state}
-            describe={data.describe}
+            imagePath={_data.imagePath}
+            title={_data.title}
+            author={_data.author}
+            dailyPrice={_data.dailyPrice}
+            collateralPrice={_data.collateralPrice}
+            priceUnit={_data.priceUnit}
+            state={_data.state}
+            describe={_data.describe}
           />
         ))}
       </Content>
@@ -34,10 +54,8 @@ const Container = styled.div`
 `
 
 const Content = styled.div`
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  display: grid;
-  gap: 30px;
-  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
 `
 
 export default Market;

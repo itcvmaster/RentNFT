@@ -36,7 +36,7 @@ const Selector: React.FC<any> = (props) => {
       <Title> {props.text} </Title>
       <Default onClick={() => setOpened(!opened)} $isOpen={opened}>
         <Text>{selectName}</Text>
-        {!opened && <Icon src="icons/select.svg" />}
+        {!opened && <Icon src="icons/select-black.svg" />}
       </Default>
 
       {opened &&
@@ -58,15 +58,15 @@ const Selector: React.FC<any> = (props) => {
 const Container = styled.div`
   user-select: none;
   display: block;
-  width: 220px;
+  width: 200px;
   box-sizing: border-box;
 `
 
 const Title = styled.div`
   font-weight: 400;
   font-size: 12px;
-  color: "#707A83";
-  margin-left: 18px;
+  color: var(--shade-2);
+  padding-left: 18px;
 `;
 
 const Default = styled.div<{$isOpen:boolean}>`
@@ -75,14 +75,14 @@ const Default = styled.div<{$isOpen:boolean}>`
   display: flex;
   flex-direction: row;
   height: 36px;
-  border: 1px solid #E8EBED;
+  border: 1px solid var(--shade-6);
   box-sizing: border-box;
   border-radius: 18px;
   background-color: transparent;
-  color: #707A83;
+  color: var(--shade-2);
   align-items: center;
   justify-content: space-between;
-  padding: 0 15px;
+  padding: 0 18px;
   border-bottom-width: ${({$isOpen})=>$isOpen? "0px":"1px"};
   border-bottom-left-radius: ${({$isOpen})=>$isOpen? "0px":"18px"};
   border-bottom-right-radius: ${({$isOpen})=>$isOpen? "0px":"18px"};
@@ -94,12 +94,12 @@ const Text = styled.div`
 const SelectList = styled.div`
   z-index: 2;
   position: absolute;
-  width: 220px;
+  width: 200px;
   height: auto;
   display: block;
   box-sizing: border-box;
-  background-color: #FFFFFF;  
-  border: 1px solid #E8EBED;
+  background-color: var(--shade-8);  
+  border: 1px solid var(--shade-6);
   border-radius: 22px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
@@ -112,10 +112,9 @@ const Select = styled.div`
   align-items: center;
   height: 36px;
   box-sizing: border-box;
-  font-family: 'Pridi';
-  color: #707A83;
+  color: var(--shade-2);
   font-weight: 400;
-  padding: 0 15px;
+  padding: 0 18px;
   gap: 10px;
 
   :hover {

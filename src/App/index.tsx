@@ -19,7 +19,7 @@ const App: React.FC<any> = () => {
 }
 
 const Content = styled.div`
-  padding: 72px 0 10px 0;
+  padding: 70px 0 0 0;
 `
 
 export default App;

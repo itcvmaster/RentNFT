@@ -1,18 +1,34 @@
 import styled from 'styled-components';
+import { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Filter, CollectionCard } from 'components';
-import testData from '../utils/testData.json';
+import data from '../utils/testData.json';
 
 const Collections: React.FC<any> = () => {
+  const navigate = useNavigate();
+  const collectionData = useMemo(() => {
+    let newsArr = [];
+    newsArr.push(data[0])
+    for (let i = 0; i < data.length; i++) {
+      for (let j = 0; j < newsArr.length; j++) {
+        if (newsArr[j].author === data[i].author) break;
+        if (j === newsArr.length - 1) newsArr.push(data[i]);
+      }
+    }
+    return newsArr;
+  }, [])
+
   return (
     <Container>
       <Filter />
       <Content>
-        {testData.map((data, index) => (
+        {collectionData.map((_data, index) => (
           <CollectionCard
             key={index}
-            imagePath={data.imagePath}
-            author={data.author}
+            imagePath={_data.imagePath}
+            author={_data.author}
+            onClick={() => navigate("/Collections/" + _data.author)}
           />
         ))}
       </Content>
@@ -28,9 +44,7 @@ const Container = styled.div`
 `
 
 const Content = styled.div`
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  display: grid;
-  gap: 30px;
-  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
 `
 export default Collections;
