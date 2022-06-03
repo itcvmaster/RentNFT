@@ -7,6 +7,8 @@
     "dailyPrice": 0.05,
     "collateralPrice": 0,
     "priceUnit": "WETH",
+    "lenderAdd":"0xec3d3b8c12ff13854d11a5d105f678fa4b2f80d9",
+    "contractAdd":"0xca21d4228cdcc68d4e23807e5e370c07577dd152",
     "describe": "Zorbs were distributed for free by ZORA on New Year's 2022. Each NFT imbues the properties of its wallet holder, and when sent to someone else, will transform. View this NFT at zorb.dev/nft/13132"
   },
   {
@@ -17,6 +19,8 @@
     "dailyPrice": 0.003,
     "collateralPrice": 0.005,
     "priceUnit": "WETH",
+    "lenderAdd":"0xe1e31d99f960461be48748b058eab0152d373c75",
+    "contractAdd":"0xf880b2a16f257d0b9b8ab64351a07a4137527c82",
     "describe": "Cool Cookies is a community-driven PFP project that grants you access to the largest Cookie Jar on the Ethereum Blockchain! Holders will be able to participate in a community-funded DAO, exclusive events, giveaways and more!"
   },
   {

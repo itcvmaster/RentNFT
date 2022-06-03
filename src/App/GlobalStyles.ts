@@ -30,7 +30,13 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
     color: var(--shade-1);
+    font-family: myFont;
   };
+
+  @font-face {
+    font-family: myFont;  
+    src: url('/fonts/Pridi-Regular.ttf');
+  }
 }
 `;
 

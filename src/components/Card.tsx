@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 import { Icon15x15 } from './Icon';
-import Modal from './Modal';
+import Modal from './Modals';
 import { tablet, mobile, mobileSmall } from 'utils'
+import RentingDetail from './Modals/RentingDetail';
 
 export const MarketCard: React.FC<any> = (props: any) => {
   let [showModal, setShowModal] = useState(false)
@@ -39,14 +40,19 @@ export const MarketCard: React.FC<any> = (props: any) => {
       <Modal
         showModal={showModal}
         setShowModal={setShowModal}
-        imagePath={props.imagePath}
-        title={props.title}
-        author={props.author}
-        dailyPrice={props.dailyPrice}
-        collateralPrice={props.collateralPrice}
-        priceUnit={props.priceUnit}
-        state={props.state}
-        describe={props.describe}
+        content={<RentingDetail
+          setShowModal={setShowModal}
+          imagePath={props.imagePath}
+          title={props.title}
+          author={props.author}
+          dailyPrice={props.dailyPrice}
+          collateralPrice={props.collateralPrice}
+          priceUnit={props.priceUnit}
+          lenderAdd={props.lenderAdd}
+          contractAdd={props.contractAdd}
+          state={props.state}
+          describe={props.describe}
+        />}
       />
     </Container >
   );

@@ -1,11 +1,70 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useMoralis } from 'react-moralis';
+
+import { NETWORK_NAMES, SUPPORTED_CHAIN_ID, CONNECT_WALLET_TYPE } from 'utils'
 import { mobile, mobileSmall } from 'utils'
 import { Logo } from 'components';
 import { Icon30x30 } from 'components/Icon';
+import { Modal } from 'components';
+import ConnectWallet from 'components/Modals/ConnectWallet';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+
+  const [isMoralisInitialized, setInitialized] = useState(false);
+  const [isConnecting, setConnecting] = useState(false);
+  const { authenticate, isAuthenticated, isInitialized, account, chainId, logout } = useMoralis();
+
+  const onConnect = async () => {
+    try {
+      setConnecting(true);
+      await authenticate({ signingMessage: "Log in using Moralis" });
+      setConnecting(false);
+      setShowModal(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const onDisconnect = async () => {
+    try {
+      await logout();
+      setShowModal(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const onClickWallet = () => {
+    console.log("Calling onClickWallet");
+    if (!isAuthenticated) {
+      onConnect();
+    } else {
+      onDisconnect();
+    }
+  }
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      // setConnecting(true);
+    }
+    if (!isMoralisInitialized && isInitialized) {
+      if (isAuthenticated) {
+        authenticate().then(() => setConnecting(false));
+      }
+      setInitialized(true);
+    }
+  }, [isMoralisInitialized, isInitialized, isAuthenticated, authenticate]);
+
+  useEffect(() => {
+    if (isMoralisInitialized && isAuthenticated && Number.parseInt(chainId || "0") !== SUPPORTED_CHAIN_ID) {
+      window.alert(`Please switch to ${NETWORK_NAMES[SUPPORTED_CHAIN_ID]}`);
+    }
+  }, [isInitialized, isAuthenticated, chainId, isMoralisInitialized]);
+
   return (
     <Container id="sticky-header">
       <Logo />
@@ -17,10 +76,21 @@ const Header: React.FC = () => {
           Collections
         </Menu>
       </Section>
-      <Menu >
-        Connect Wallet
+      <Menu onClick={() => setShowModal(true)}>
+        {isAuthenticated ? account?.slice(0, 5) + "..." + account?.slice(account.length - 3) : (isConnecting ? CONNECT_WALLET_TYPE.connecting : CONNECT_WALLET_TYPE.unConnected)}
       </Menu>
       <HidenMenuIcon src="icons/select.svg" />
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        content={
+          <ConnectWallet
+            onClickWallet={onClickWallet}
+            isAuthenticated={isAuthenticated}
+            setShowModal={setShowModal}
+          />
+        }
+      />
     </Container>
   );
 }

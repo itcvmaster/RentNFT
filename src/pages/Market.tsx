@@ -40,6 +40,8 @@ const Market: React.FC<any> = () => {
             dailyPrice={_data.dailyPrice}
             collateralPrice={_data.collateralPrice}
             priceUnit={_data.priceUnit}
+            lenderAdd={_data.lenderAdd}
+            contractAdd={_data.contractAdd}
             state={_data.state}
             describe={_data.describe}
           />
