@@ -103,27 +103,31 @@ const Filter: React.FC<any> = (props: any) => {
       <FilterBar>
         <Selector
           selects={CollateralSelectNames}
-          text='Collateral type'
+          text="Collateral type"
           selectName={collateral}
           setSelectName={setCollateral}
+          width="200px"
         />
         <Selector
           selects={StateSelectNames}
-          text='State'
+          text="State"
           selectName={tokenState}
           setSelectName={setTokenState}
+          width="200px"
         />
         <Selector
           selects={PriceRangeSelectNames}
-          text='Price Range'
+          text="Price Range"
           selectName={priceRange}
           setSelectName={setPriceRange}
+          width="200px"
         />
         <Selector
           selects={SortSelectNames}
-          text='Sort By'
+          text="Sort By"
           selectName={sort}
           setSelectName={setSort}
+          width="250px"
         />
       </FilterBar>
     </Container>

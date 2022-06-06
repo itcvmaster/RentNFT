@@ -5,7 +5,7 @@ import Icon from "./Icon";
 
 
 const Selector: React.FC<any> = (props) => {
-  const { selects, text, selectName, setSelectName } = props;
+  const { selects, text, selectName, setSelectName, width } = props;
   let [opened, setOpened] = useState(false);
 
   const selector: any = useRef(null);
@@ -29,7 +29,10 @@ const Selector: React.FC<any> = (props) => {
   }
 
   return (
-    <Container ref={selector}>
+    <Container
+      ref={selector}
+      width={width}
+    >
       <Title> {text} </Title>
       <Default onClick={() => setOpened(!opened)}>
         <Text>{selectName}</Text>
@@ -37,7 +40,7 @@ const Selector: React.FC<any> = (props) => {
       </Default>
 
       {opened &&
-        <SelectList>
+        <SelectList width={width}>
           {selects && selects.map((select: any) =>
             <Select
               onClick={() => onSelect(select)}
@@ -52,10 +55,10 @@ const Selector: React.FC<any> = (props) => {
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ width: string }>`
   user-select: none;
   display: block;
-  width: 220px;
+  width: ${(props) => props.width};
   box-sizing: border-box;
 `
 
@@ -85,10 +88,10 @@ const Default = styled.div`
 const Text = styled.div`
 `
 
-const SelectList = styled.div`
+const SelectList = styled.div<{ width: string }>`
   z-index: 2;
   position: absolute;
-  width: 220px;
+  width: ${(props) => props.width};
   height: auto;
   display: block;
   box-sizing: border-box;

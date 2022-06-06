@@ -115,7 +115,7 @@ const Section = styled.div`
   gap: 50px;
   box-sizing: border-box;
 `;
-const Input = styled.input`
+export const Input = styled.input`
   box-sizing: border-box;
   border: 1px solid var(--shade-4);
   border-radius: var(--border-radius);
@@ -132,7 +132,7 @@ const Block = styled.div`
   width: 100%;
   max-width: 500px;
 `;
-const Line = styled.div`
+export const Line = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

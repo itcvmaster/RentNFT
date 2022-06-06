@@ -1,4 +1,5 @@
 import Collections from "./Collections";
 import Market from "./Market";
+import Admin from "./Admin";
 
-export { Collections, Market };
+export { Collections, Market, Admin };

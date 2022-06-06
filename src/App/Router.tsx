@@ -2,7 +2,8 @@ import { RouteObject, useRoutes } from 'react-router-dom';
 
 import {
   Market,
-  Collections
+  Collections,
+  Admin
 } from 'pages';
 
 const routes: RouteObject[] = [
@@ -24,6 +25,11 @@ const routes: RouteObject[] = [
   {
     path: "/Collections/:id",
     element: <Market />,
+    children: [],
+  },
+  {
+    path: "/Admin",
+    element: <Admin />,
     children: [],
   },
 ];
