@@ -1,17 +1,21 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import { Icon30x30 } from '../Icon';
 import { Button, Input } from "components";
 import { mobile } from 'utils'
 
-const RentingDetail: React.FC<any> = (props) => {
+const LendSetting: React.FC<any> = (props) => {
   const navigate = useNavigate();
+  const [maxDuration, setMaxDuration] = useState("30");
+  const [dailyPrice, setDailyPrice] = useState(props.dailyPrice);
+  const [collateral, setCollateral] = useState(props.collateralPrice);
   return (
     <Container>
       <Title>
         <Icon30x30 src="icons/logo.svg" />
-        <Span>Renting Details</Span>
+        <Span>Lend Setting</Span>
         <Icon30x30
           src="icons/close.svg"
           onClick={() => props.setShowModal(false)}
@@ -23,15 +27,6 @@ const RentingDetail: React.FC<any> = (props) => {
         </Section>
         <Section>
           <Block>
-            <Lender>
-              <Text>{props.lenderAdd ? "Lender" : ""}</Text>
-              <A
-                href={props.lenderAdd ? "https://etherscan.io/address/" + props.lenderAdd : ""}
-                target="_blank"
-              >
-                {props.lenderAdd ? props.lenderAdd.slice(0, 5) + "..." + props.lenderAdd.slice(props.lenderAdd.length - 3) : ""}
-              </A>
-            </Lender>
             <TextClick
               onClick={() => {
                 navigate("/Collections/" + props.author)
@@ -41,40 +36,39 @@ const RentingDetail: React.FC<any> = (props) => {
               {props.author}
             </TextClick>
             <TextBlack>{props.title}</TextBlack>
-            <A
-              href={props.contractAdd ? "https://etherscan.io/address/" + props.contractAdd : ""}
-              target="_blank"
-            >
-              {props.contractAdd ? props.contractAdd.slice(0, 5) + "..." + props.contractAdd.slice(props.contractAdd.length - 3) : ""}
-            </A>
             <Text>{props.describe}</Text>
           </Block>
           <Block>
             <Input
-              title = {"Rent Duration"}
+              title = {"Max Duration"}
+              value = {maxDuration}
+              onChange = {setMaxDuration}
               unit = {"Days"}
             />
-            <Line>
-              <Text>Max Duration</Text>
-              <Text>30 Days</Text>
-            </Line>
-            <Line>
-              <Text>Daily price</Text>
-              <Text>{props.dailyPrice} {props.priceUnit}</Text>
-            </Line>
-            <Line>
-              <Text>Collateral</Text>
-              <Text>{props.collateralPrice} {props.priceUnit}</Text>
-            </Line>
+            <Input
+              title = {"Daily price"}
+              value = {dailyPrice}
+              onChange = {setDailyPrice}
+              unit = {"ETH"}
+            />
+            <Input
+              title = {"Collateral"}
+              value = {collateral}
+              onChange = {setCollateral}
+              unit = {"ETH"}
+            />
           </Block>
-          <Button text="Rent Now" />
+          <Button 
+            text="Lend Now" 
+            onClick={props.onClose}
+          />
         </Section>
       </Content>
     </Container>
   )
 }
 
-export default RentingDetail;
+export default LendSetting;
 
 const Container = styled.div`
   width: 90%;
@@ -86,6 +80,8 @@ const Container = styled.div`
 `;
 const Title = styled.div`
   display: flex;
+  cursor: pointer; 
+  user-select: none;
   justify-content: space-between;
   align-items: center;
   background: var(--blue);
@@ -119,6 +115,7 @@ const Section = styled.div`
   gap: 50px;
   box-sizing: border-box;
 `;
+
 const Block = styled.div`
   display: flex;
   flex-direction: column;

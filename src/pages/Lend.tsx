@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { MarketCard } from 'components';
+import { LendCard } from 'components';
 import GetData from 'utils/getData';
 import data from '../utils/testData.json';
 
@@ -10,7 +10,7 @@ const Lend: React.FC<any> = () => {
     <Container>
       <Content>
         {data.map((_data: any, index: number) => (
-          <MarketCard
+          <LendCard
             key={index}
             imagePath={_data.imagePath}
             title={_data.title}

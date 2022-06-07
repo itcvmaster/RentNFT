@@ -5,6 +5,8 @@ import { Icon15x15 } from './Icon';
 import Modal from './Modals';
 import { tablet, mobile, mobileSmall } from 'utils'
 import RentingDetail from './Modals/RentingDetail';
+import LendSetting from './Modals/LendSetting';
+import PayBackSetting from './Modals/PayBackSetting';
 
 export const MarketCard: React.FC<any> = (props: any) => {
   let [showModal, setShowModal] = useState(false)
@@ -79,6 +81,111 @@ export const CollectionCard: React.FC<any> = (props: any) => {
     </Container >
   );
 }
+
+export const LendCard: React.FC<any> = (props: any) => {
+  let [showModal, setShowModal] = useState(false)
+  return (
+    <Container>
+      <CardBody>
+        <Img
+          src={props.imagePath}
+          onClick={() => setShowModal(true)}
+        />
+        <Content>
+          <Title>{props.title}</Title>
+          <Line>{props.author}</Line>
+          <Line>
+            Daily Price
+            <div>
+              {props.dailyPrice}
+              {props.priceUnit}
+            </div>
+          </Line>
+          <Line>
+            Collateral
+            <div>
+              {props.collateralPrice}
+              {props.priceUnit}
+            </div>
+          </Line>
+          <Line>
+            {props.state}
+          </Line>
+        </Content>
+      </CardBody>
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        content={<LendSetting
+          setShowModal={setShowModal}
+          imagePath={props.imagePath}
+          title={props.title}
+          author={props.author}
+          dailyPrice={props.dailyPrice}
+          collateralPrice={props.collateralPrice}
+          priceUnit={props.priceUnit}
+          lenderAdd={props.lenderAdd}
+          contractAdd={props.contractAdd}
+          state={props.state}
+          describe={props.describe}
+          onClose={() => setShowModal(false)}
+        />}
+      />
+    </Container >
+  );
+}
+
+export const PayBackCard: React.FC<any> = (props: any) => {
+  let [showModal, setShowModal] = useState(false)
+  return (
+    <Container>
+      <CardBody>
+        <Img
+          src={props.imagePath}
+          onClick={() => setShowModal(true)}
+        />
+        <Content>
+          <Title>{props.title}</Title>
+          <Line>{props.author}</Line>
+          <Line>
+            Daily Price
+            <div>
+              {props.dailyPrice}
+              {props.priceUnit}
+            </div>
+          </Line>
+          <Line>
+            Collateral
+            <div>
+              {props.collateralPrice}
+              {props.priceUnit}
+            </div>
+          </Line>
+          <Line>
+            {props.state}
+          </Line>
+        </Content>
+      </CardBody>
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        content={<PayBackSetting
+          setShowModal={setShowModal}
+          imagePath={props.imagePath}
+          title={props.title}
+          author={props.author}
+          dailyPrice={props.dailyPrice}
+          collateralPrice={props.collateralPrice}
+          priceUnit={props.priceUnit}
+          lenderAdd={props.lenderAdd}
+          contractAdd={props.contractAdd}
+          state={props.state}
+          describe={props.describe}
+        />}
+      />
+    </Container >
+  );
+}
 const Container = styled.div`
   box-sizing: border-box;
   padding: 20px 10px;
@@ -136,6 +243,8 @@ const Opensea = styled.a`
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  gap: 5px;
+  user-select: none;
 `
 
 

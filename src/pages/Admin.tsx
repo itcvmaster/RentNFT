@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { useNewMoralisObject } from "react-moralis";
 import { useState } from "react";
 
-import { Button } from "components";
-import { Input, Line, Text } from "components/Modals/RentingDetail";
+import { Button, Input } from "components";
+import { Line, Text } from "components/Modals/RentingDetail";
 
 const Admin: React.FC<any> = () => {
   const { save } = useNewMoralisObject("NFT");
@@ -47,43 +47,45 @@ const Admin: React.FC<any> = () => {
       <Card>
         <Line >
           <Text>imagePath</Text>
-          <Input onChange={(e) => setImagePath(e.target.value)} />
+          <Input onChange={setImagePath} />
         </Line>
         <Line >
           <Text>author</Text>
-          <Input onChange={(e) => setAuthor(e.target.value)} />
+          <Input onChange={setAuthor} />
         </Line>
         <Line >
           <Text>title</Text>
-          <Input onChange={(e) => setTitle(e.target.value)} />
+          <Input onChange={setTitle} />
         </Line>
         <Line >
           <Text>state</Text>
-          <Input onChange={(e) => setState(e.target.value)} />
+          <Input onChange={setState} />
         </Line>
         <Line >
           <Text>dailyPrice</Text>
-          <Input onChange={(e) => setDailyPrice(Number(e.target.value))} />
+          <Input onChange={setDailyPrice} />
         </Line>
         <Line >
           <Text>collateralPrice</Text>
-          <Input onChange={(e) => setCollateralPrice(Number(e.target.value))} />
+          <Input onChange={(setCollateralPrice)} />
         </Line>
         <Line >
           <Text>priceUnit</Text>
-          <Input onChange={(e) => setPriceUnit(e.target.value)} />
+          <Input onChange={setPriceUnit} />
         </Line>
         <Line >
           <Text>lenderAdd</Text>
-          <Input onChange={(e) => setLenderAdd(e.target.value)} />
+          <Input 
+            onChange={setLenderAdd} 
+          />
         </Line>
         <Line >
           <Text>contractAdd</Text>
-          <Input onChange={(e) => setContractAdd(e.target.value)} />
+          <Input onChange={setContractAdd} />
         </Line>
         <Line >
           <Text>describe</Text>
-          <Input onChange={(e) => setDescribe(e.target.value)} />
+          <Input onChange={setDescribe} />
         </Line>
       </Card>
       <Button

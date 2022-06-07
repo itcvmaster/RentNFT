@@ -2,16 +2,18 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 import { Icon30x30 } from '../Icon';
-import { Button, Input } from "components";
+import { Button } from "components";
 import { mobile } from 'utils'
 
-const RentingDetail: React.FC<any> = (props) => {
+const PayBackSetting: React.FC<any> = (props) => {
+  const Duration = 7;
+  const TotalAmount = Duration * props.dailyPrice;
   const navigate = useNavigate();
   return (
     <Container>
       <Title>
         <Icon30x30 src="icons/logo.svg" />
-        <Span>Renting Details</Span>
+        <Span>Pay Back Setting</Span>
         <Icon30x30
           src="icons/close.svg"
           onClick={() => props.setShowModal(false)}
@@ -23,15 +25,6 @@ const RentingDetail: React.FC<any> = (props) => {
         </Section>
         <Section>
           <Block>
-            <Lender>
-              <Text>{props.lenderAdd ? "Lender" : ""}</Text>
-              <A
-                href={props.lenderAdd ? "https://etherscan.io/address/" + props.lenderAdd : ""}
-                target="_blank"
-              >
-                {props.lenderAdd ? props.lenderAdd.slice(0, 5) + "..." + props.lenderAdd.slice(props.lenderAdd.length - 3) : ""}
-              </A>
-            </Lender>
             <TextClick
               onClick={() => {
                 navigate("/Collections/" + props.author)
@@ -41,40 +34,38 @@ const RentingDetail: React.FC<any> = (props) => {
               {props.author}
             </TextClick>
             <TextBlack>{props.title}</TextBlack>
-            <A
-              href={props.contractAdd ? "https://etherscan.io/address/" + props.contractAdd : ""}
-              target="_blank"
-            >
-              {props.contractAdd ? props.contractAdd.slice(0, 5) + "..." + props.contractAdd.slice(props.contractAdd.length - 3) : ""}
-            </A>
             <Text>{props.describe}</Text>
           </Block>
           <Block>
-            <Input
-              title = {"Rent Duration"}
-              unit = {"Days"}
-            />
             <Line>
-              <Text>Max Duration</Text>
-              <Text>30 Days</Text>
+              <Text>Rent Date</Text>
+              <Text>6/6/2022</Text>
             </Line>
             <Line>
-              <Text>Daily price</Text>
+              <Text>Duration</Text>
+              <Text>{Duration} Days</Text>
+            </Line>
+            <Line>
+              <Text>Daily Price</Text>
               <Text>{props.dailyPrice} {props.priceUnit}</Text>
             </Line>
             <Line>
-              <Text>Collateral</Text>
+              <Text>Collateral Price</Text>
               <Text>{props.collateralPrice} {props.priceUnit}</Text>
             </Line>
+            <Line>
+              <Text>Total Amount</Text>
+              <Text>{TotalAmount} {props.priceUnit}</Text>
+            </Line>
           </Block>
-          <Button text="Rent Now" />
+          <Button text="Pay Back" />
         </Section>
       </Content>
     </Container>
   )
 }
 
-export default RentingDetail;
+export default PayBackSetting;
 
 const Container = styled.div`
   width: 90%;
@@ -119,6 +110,7 @@ const Section = styled.div`
   gap: 50px;
   box-sizing: border-box;
 `;
+
 const Block = styled.div`
   display: flex;
   flex-direction: column;

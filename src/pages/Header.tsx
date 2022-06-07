@@ -81,6 +81,13 @@ const Header: React.FC = () => {
     }
   }, [isInitialized, isAuthenticated, chainId, isMoralisInitialized]);
 
+  const [tab, selectTab] = useState("");
+
+  const onClick = (pageName: string) => {
+    navigate(pageName);
+    selectTab(pageName);
+  };
+
   return (
     <Container
       id="sticky-header"
@@ -90,20 +97,35 @@ const Header: React.FC = () => {
       <Content>
         <Logo />
         <Section>
-          <Menu onClick={() => navigate("/")} >
-            Maket
+          <Menu 
+            onClick={() => onClick("/")}
+            isActive={tab === "/"}
+          >
+            Market
           </Menu>
-          <Menu onClick={() => navigate("/Collections")} >
+          <Menu 
+            onClick={() => onClick("/Collections")} 
+            isActive={tab === "/Collections"}
+          >
             Collections
           </Menu>
-          <Menu onClick={() => navigate("/Lend")}>
+          <Menu 
+            onClick={() => onClick("/Lend")}
+            isActive={tab === "/Lend"}
+          >
             Lend
           </Menu>
-          <Menu onClick={() => navigate("/PayBack")}>
+          <Menu 
+            onClick={() => onClick("/PayBack")}
+            isActive={tab === "/PayBack"}
+          >
             Pay Back
           </Menu>
         </Section>
-        <Menu onClick={() => setShowModal(true)}>
+        <Menu 
+          onClick={() => setShowModal(true)}
+          isActive={tab === "/ConnectWallet"}
+        >
           {isAuthenticated ? account?.slice(0, 5) + "..." + account?.slice(account.length - 3) : (isConnecting ? CONNECT_WALLET_TYPE.connecting : CONNECT_WALLET_TYPE.unConnected)}
         </Menu>
         <HidenMenuIcon
@@ -180,7 +202,8 @@ const MobileMenu = styled.div`
   font-weight: 300;
   font-size: 18px;
   border: 0;
-  cursor: pointer;
+  cursor: pointer; 
+  user-select: none;
   background: transparent;
   color: var(--shade-7);
   :hover {
@@ -198,16 +221,14 @@ const Section = styled.div`
   }
 `;
 
-const Menu = styled.button`
-  font-weight: 300;
+const Menu = styled.div<{isActive: boolean}>`
+  font-weight: ${props => props.isActive ? 700 : 300};
   font-size: 18px;
   border: 0;
-  cursor: pointer;
+  cursor: pointer; 
+  user-select: none;
   background: transparent;
   color: var(--shade-7);
-  :hover {
-    color: var(--hover);
-  }
   ${mobile} {
     display: none;
   }

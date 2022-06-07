@@ -13,7 +13,8 @@ const Logo: React.FC<any> = () => {
 }
 
 const Container = styled.div`
-  cursor: pointer;
+  cursor: pointer; 
+  user-select: none;
   display: flex;
   flex-direction: row;
   align-items: center;
