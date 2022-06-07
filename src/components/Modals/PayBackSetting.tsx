@@ -58,7 +58,10 @@ const PayBackSetting: React.FC<any> = (props) => {
               <Text>{TotalAmount} {props.priceUnit}</Text>
             </Line>
           </Block>
-          <Button text="Pay Back" />
+          <Button 
+            text="Pay Back"
+            onClick={props.onClose} 
+          />
         </Section>
       </Content>
     </Container>

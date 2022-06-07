@@ -31,8 +31,7 @@ const PayBack: React.FC<any> = () => {
 
 const Container = styled.div`
   display: block;
-  padding: var(--padding);
-  padding-bottom: 50px;
+  padding: 20px;
   box-sizing: border-box;
 `
 
