@@ -96,6 +96,12 @@ const Header: React.FC = () => {
           <Menu onClick={() => navigate("/Collections")} >
             Collections
           </Menu>
+          <Menu onClick={() => navigate("/Lend")}>
+            Lend
+          </Menu>
+          <Menu onClick={() => navigate("/PayBack")}>
+            Pay Back
+          </Menu>
         </Section>
         <Menu onClick={() => setShowModal(true)}>
           {isAuthenticated ? account?.slice(0, 5) + "..." + account?.slice(account.length - 3) : (isConnecting ? CONNECT_WALLET_TYPE.connecting : CONNECT_WALLET_TYPE.unConnected)}
