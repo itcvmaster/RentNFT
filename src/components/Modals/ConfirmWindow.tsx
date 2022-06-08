@@ -11,7 +11,7 @@ const ConfirmWindow: React.FC<any> = (props) => {
   const onClickOutside = (e: any) => {
     if (!selector || !selector?.current) return;
     if (!selector.current.contains(e.target)) {
-      props.setShowModal(false);
+      props.setConfirm(false);
     }
   }
   useEffect(() => {
@@ -23,7 +23,7 @@ const ConfirmWindow: React.FC<any> = (props) => {
 
   return (
     <Container ref={selector}>
-      <Card onClick={props.onClickWallet}>
+      <Card>
         <Text>{"Returned correctly!"}</Text>
       </Card>
     </Container>

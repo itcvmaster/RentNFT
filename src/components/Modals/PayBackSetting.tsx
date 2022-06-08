@@ -60,7 +60,7 @@ const PayBackSetting: React.FC<any> = (props) => {
           </Block>
           <Button 
             text="Pay Back"
-            onClick={props.onClose} 
+            onClick={() => props.setConfirm(true)}
           />
         </Section>
       </Content>

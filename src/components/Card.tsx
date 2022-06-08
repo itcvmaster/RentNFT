@@ -7,9 +7,11 @@ import { tablet, mobile, mobileSmall } from 'utils'
 import RentingDetail from './Modals/RentingDetail';
 import LendSetting from './Modals/LendSetting';
 import PayBackSetting from './Modals/PayBackSetting';
+import ConfirmWindow from './Modals/ConfirmWindow';
 
 export const MarketCard: React.FC<any> = (props: any) => {
-  let [showModal, setShowModal] = useState(false)
+  let [showModal, setShowModal] = useState(false);
+
   return (
     <Container>
       <CardBody>
@@ -136,7 +138,8 @@ export const LendCard: React.FC<any> = (props: any) => {
 }
 
 export const PayBackCard: React.FC<any> = (props: any) => {
-  let [showModal, setShowModal] = useState(false)
+  let [showModal, setShowModal] = useState(false);
+  let [confirm, setConfirm] = useState(false);
   return (
     <Container>
       <CardBody>
@@ -181,6 +184,14 @@ export const PayBackCard: React.FC<any> = (props: any) => {
           contractAdd={props.contractAdd}
           state={props.state}
           describe={props.describe}
+          setConfirm={setConfirm}
+        />}
+      />
+      <Modal
+        showModal={confirm}
+        setShowModal={setConfirm}
+        content={<ConfirmWindow
+          setConfirm={setConfirm}
         />}
       />
     </Container >
