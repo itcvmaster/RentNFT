@@ -137,9 +137,17 @@ export const LendCard: React.FC<any> = (props: any) => {
   );
 }
 
+
+
 export const PayBackCard: React.FC<any> = (props: any) => {
   let [showModal, setShowModal] = useState(false);
   let [confirm, setConfirm] = useState(false);
+  
+  const onOK = () => { 
+    setConfirm(false);
+    setShowModal(false);
+  }
+
   return (
     <Container>
       <CardBody>
@@ -192,6 +200,7 @@ export const PayBackCard: React.FC<any> = (props: any) => {
         setShowModal={setConfirm}
         content={<ConfirmWindow
           setConfirm={setConfirm}
+          onClose={onOK}
         />}
       />
     </Container >

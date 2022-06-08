@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 
 import { mobileSmall } from 'utils'
 import { Icon50x50 } from "components/Icon";
-import { TextBlack, Text } from "./RentingDetail";
+import Button from "components/Button";
 
 const ConfirmWindow: React.FC<any> = (props) => {
 
@@ -25,6 +25,10 @@ const ConfirmWindow: React.FC<any> = (props) => {
     <Container ref={selector}>
       <Card>
         <Text>{"Returned correctly!"}</Text>
+        <Button 
+          text={"OK"} 
+          onClick={props.onClose}
+        />
       </Card>
     </Container>
   )
@@ -44,6 +48,11 @@ const Container = styled.div`
     width: 100%;
   }
 `;
+const Text = styled.div`
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--shade-4);
+`;
 const Card = styled.div`
   cursor: pointer;
   width: 100%;
@@ -54,5 +63,5 @@ const Card = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
 `
