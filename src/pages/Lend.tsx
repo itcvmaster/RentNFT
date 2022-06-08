@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { LendCard } from 'components';
-import GetData from 'utils/getData';
+// import GetData from 'utils/getData';
 import data from '../utils/testData.json';
 
 const Lend: React.FC<any> = () => {

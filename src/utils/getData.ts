@@ -25,7 +25,7 @@ const GetData = () => {
       // console.log(tempData);
     }
   }
-  getData();
+  // getData();
   return tempData;
 }
 

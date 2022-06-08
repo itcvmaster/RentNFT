@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { PayBackCard } from 'components';
-import GetData from 'utils/getData';
+// import GetData from 'utils/getData';
 import data from '../utils/testData.json';
 
 const PayBack: React.FC<any> = () => {
