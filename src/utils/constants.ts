@@ -36,14 +36,14 @@ export const TwitterUrl = "https://twitter.com/renftlabs";
 export const LinkedinUrl = "https://twitter.com/renftlabs";
 
 export const MORALIS_TEST_SERVER = {
-  serverUrl: "https://jzfp2bhujx87.usemoralis.com:2053/server",
-  appId: "VG8ZN7PZh1Oa8LEUuiSJvC0gsPWej5lIRLJqKuX7",
-  masterKey: "2mWLVfkk8RqjcuRGOFlI2OLGVn1lT8O6hKQKwvRO",
-  dashboardUser: "e2lFjBw69v",
-  dashboardPassword: "TB0e2Dpl1A",
+  serverUrl: "https://aqk3pimd59ws.usemoralis.com:2053/server",
+  appId: "1P8UYiOt87RheKZ1UVBVoq5ApYsrsK2ixfq13wxi",
+  masterKey: "UnOmZXn94fGQ1jqznqRVEfNiRgVUeZcIB8Wi54ws",
+  dashboardUser: "G5lg5gOYeb",
+  dashboardPassword: "ACqRrHJirn",
   cliApi: "Zx9pwWhPlE9jkzS",
   cliApiSecret: "hrqc0joZoN7syIq",
-  mongoDbIp: "137.184.148.48:56728",
+  mongoDbIp: "167.99.15.64:56728",
 }
 
 export const NETWORK_NAMES = {
