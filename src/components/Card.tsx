@@ -100,9 +100,6 @@ export const LendCard: React.FC<any> = (props: any) => {
         />
         <Content>
           <Title>{props.title}</Title>
-          <Line>
-            {props.state}
-          </Line>
         </Content>
       </CardBody>
       <Modal
@@ -148,9 +145,6 @@ export const PayBackCard: React.FC<any> = (props: any) => {
         />
         <Content>
           <Title>{props.title}</Title>
-          <Line>
-            {props.state}
-          </Line>
         </Content>
       </CardBody>
       <Modal
