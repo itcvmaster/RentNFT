@@ -6,18 +6,18 @@ export const Input: React.FC<any> = (props) => {
       <Title $isError={props.color}>
         {props.title}
       </Title>
-			<Content>
-				<InputStyle
-					onChange={(e) => props.onChange(e.target.value)}
-					placeholder={props.holder}
-					value={props.value}
-					type={props.type}
-					disabled={props.disabled}
-				/>
-				<Unit>
-					{props.unit}
-				</Unit>
-			</Content> 
+      <Content>
+        <InputStyle
+          onChange={(e) => props.onChange(e.target.value)}
+          placeholder={props.holder}
+          value={props.value}
+          type={props.type}
+          disabled={props.disabled}
+        />
+        <Unit>
+          {props.unit}
+        </Unit>
+      </Content>
     </Container>
   );
 }
@@ -45,7 +45,7 @@ const InputStyle = styled.input`
 	text-align: right;
 `;
 
-export const Title = styled.div<{$isError?:any}>`
+export const Title = styled.div<{ $isError?: any }>`
 	font-weight: 400;
   font-size: 14px;
   color: var(--shade-4);

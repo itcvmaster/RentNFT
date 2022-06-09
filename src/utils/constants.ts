@@ -58,29 +58,3 @@ export const CONNECT_WALLET_TYPE = {
   unConnected: "Connect Wallet",
   connecting: "Connecting..."
 }
-
-export const DATA_TYPE = [
-  "imagePath",
-  "author",
-  "title",
-  "state",
-  "dailyPrice",
-  "collateralPrice",
-  "priceUnit",
-  "lenderAdd",
-  "contractAdd",
-  "describe"
-]
-
-export interface DataFormat {
-  imagePath: string,
-  author: string,
-  title: string,
-  state: string,
-  dailyPrice: number,
-  collateralPrice: number,
-  priceUnit: string,
-  lenderAdd: string,
-  contractAdd: string,
-  describe?: string
-}

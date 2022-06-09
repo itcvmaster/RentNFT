@@ -51,12 +51,12 @@ const RentingDetail: React.FC<any> = (props) => {
           </Block>
           <Block>
             <Input
-              title = {"Rent Duration"}
-              unit = {"Days"}
+              title = "Rent Duration"
+              unit = "Days"
             />
             <Line>
               <Text>Max Duration</Text>
-              <Text>30 Days</Text>
+              <Text>{props.maxDuration} Days</Text>
             </Line>
             <Line>
               <Text>Daily price</Text>
@@ -67,7 +67,10 @@ const RentingDetail: React.FC<any> = (props) => {
               <Text>{props.collateralPrice} {props.priceUnit}</Text>
             </Line>
           </Block>
-          <Button text="Rent Now" />
+          <Button 
+            text="Rent Now" 
+            onClick={() => props.setShowModal(false)}
+          />
         </Section>
       </Content>
     </Container>

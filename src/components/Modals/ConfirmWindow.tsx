@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useRef } from "react";
 
-import { mobileSmall } from 'utils'
-import { Icon50x50 } from "components/Icon";
+import { mobileSmall } from 'utils';
 import Button from "components/Button";
 
 const ConfirmWindow: React.FC<any> = (props) => {
@@ -24,9 +23,9 @@ const ConfirmWindow: React.FC<any> = (props) => {
   return (
     <Container ref={selector}>
       <Card>
-        <Text>{"Returned correctly!"}</Text>
+        <Text>{props.text}</Text>
         <Button 
-          text={"OK"} 
+          text="OK"
           onClick={props.onClose}
         />
       </Card>

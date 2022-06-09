@@ -1,16 +1,10 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 import { Icon30x30 } from '../Icon';
 import { Button, Input } from "components";
 import { mobile } from 'utils'
 
 const LendSetting: React.FC<any> = (props) => {
-  const navigate = useNavigate();
-  const [maxDuration, setMaxDuration] = useState("30");
-  const [dailyPrice, setDailyPrice] = useState(props.dailyPrice);
-  const [collateral, setCollateral] = useState(props.collateralPrice);
   return (
     <Container>
       <Title>
@@ -27,12 +21,7 @@ const LendSetting: React.FC<any> = (props) => {
         </Section>
         <Section>
           <Block>
-            <TextClick
-              onClick={() => {
-                navigate("/Collections/" + props.author)
-                props.setShowModal(false)
-              }}
-            >
+            <TextClick >
               {props.author}
             </TextClick>
             <TextBlack>{props.title}</TextBlack>
@@ -40,27 +29,21 @@ const LendSetting: React.FC<any> = (props) => {
           </Block>
           <Block>
             <Input
-              title = {"Max Duration"}
-              value = {maxDuration}
-              onChange = {setMaxDuration}
-              unit = {"Days"}
+              title = "Max Duration"
+              unit = "Days"
             />
             <Input
-              title = {"Daily price"}
-              value = {dailyPrice}
-              onChange = {setDailyPrice}
-              unit = {"ETH"}
+              title = "Daily price"
+              unit = "ETH"
             />
             <Input
-              title = {"Collateral"}
-              value = {collateral}
-              onChange = {setCollateral}
-              unit = {"ETH"}
+              title = "Collateral"
+              unit = "ETH"
             />
           </Block>
           <Button 
             text="Lend Now" 
-            onClick={props.onClose}
+            onClick={() => props.setConfirm(true)}
           />
         </Section>
       </Content>
@@ -136,11 +119,6 @@ const Img = styled.img`
   box-sizing: border-box;
 `;
 
-const Lender = styled.div`
-  display: flex;
-  gap: 20px;
-`
-
 export const Text = styled.div`
   font-weight: 400;
   font-size: 14px;
@@ -156,11 +134,4 @@ export const TextClick = styled.div`
   font-size: 14px;
   color: var(--shade-2);
   cursor: pointer;
-`;
-const A = styled.a`
-  font-weight: 400;
-  font-size: 14px;
-  color: var(--shade-2);
-  cursor: pointer;
-  text-decoration: none;
 `;

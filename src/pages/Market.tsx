@@ -2,13 +2,11 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
 import { Filter, MarketCard } from 'components';
-import { useEffect, useMemo, useState } from 'react';
-// import GetData from 'utils/getData';
-import data from '../utils/testData.json';
+import { useMemo, useState } from 'react';
+import data from 'utils/testData.json';
 
 const Market: React.FC<any> = () => {
   const id = useParams().id || "";
-  // const data = GetData();
   const [searchData, setSearchData] = useState(data);
   const [filterData, setFilterData] = useState(searchData);
 
@@ -21,7 +19,7 @@ const Market: React.FC<any> = () => {
       }
       return tempArr;
     }
-  }, [id, data, filterData])
+  }, [id, filterData])
 
   return (
     <Container>
@@ -39,6 +37,7 @@ const Market: React.FC<any> = () => {
             imagePath={_data.imagePath}
             title={_data.title}
             author={_data.author}
+            maxDuration={_data.maxDuration}
             dailyPrice={_data.dailyPrice}
             collateralPrice={_data.collateralPrice}
             priceUnit={_data.priceUnit}
