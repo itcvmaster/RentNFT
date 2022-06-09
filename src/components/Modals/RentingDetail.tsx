@@ -67,7 +67,10 @@ const RentingDetail: React.FC<any> = (props) => {
               <Text>{props.collateralPrice} {props.priceUnit}</Text>
             </Line>
           </Block>
-          <Button text="Rent Now" />
+          <Button 
+            text="Rent Now" 
+            onClick={() => props.setShowModal(false)}
+          />
         </Section>
       </Content>
     </Container>

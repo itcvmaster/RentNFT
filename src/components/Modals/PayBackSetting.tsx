@@ -6,8 +6,8 @@ import { Button } from "components";
 import { mobile } from 'utils'
 
 const PayBackSetting: React.FC<any> = (props) => {
-  const Duration = 7;
-  const TotalAmount = Duration * props.dailyPrice;
+  const duration = 7;
+  const totalAmount = duration * props.dailyPrice;
   const navigate = useNavigate();
   return (
     <Container>
@@ -39,11 +39,11 @@ const PayBackSetting: React.FC<any> = (props) => {
           <Block>
             <Line>
               <Text>Rent Date</Text>
-              <Text>6/6/2022</Text>
+              <Text>{props.rentDate}</Text>
             </Line>
             <Line>
               <Text>Duration</Text>
-              <Text>{Duration} Days</Text>
+              <Text>{props.duration} Days</Text>
             </Line>
             <Line>
               <Text>Daily Price</Text>
@@ -55,7 +55,7 @@ const PayBackSetting: React.FC<any> = (props) => {
             </Line>
             <Line>
               <Text>Total Amount</Text>
-              <Text>{TotalAmount} {props.priceUnit}</Text>
+              <Text>{props.totalAmount} {props.priceUnit}</Text>
             </Line>
           </Block>
           <Button 
@@ -134,11 +134,6 @@ const Img = styled.img`
   box-sizing: border-box;
 `;
 
-const Lender = styled.div`
-  display: flex;
-  gap: 20px;
-`
-
 export const Text = styled.div`
   font-weight: 400;
   font-size: 14px;
@@ -154,11 +149,4 @@ export const TextClick = styled.div`
   font-size: 14px;
   color: var(--shade-2);
   cursor: pointer;
-`;
-const A = styled.a`
-  font-weight: 400;
-  font-size: 14px;
-  color: var(--shade-2);
-  cursor: pointer;
-  text-decoration: none;
 `;

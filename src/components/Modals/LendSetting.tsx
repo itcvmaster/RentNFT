@@ -8,9 +8,7 @@ import { mobile } from 'utils'
 
 const LendSetting: React.FC<any> = (props) => {
   const navigate = useNavigate();
-  const [maxDuration, setMaxDuration] = useState("30");
-  const [dailyPrice, setDailyPrice] = useState(props.dailyPrice);
-  const [collateral, setCollateral] = useState(props.collateralPrice);
+  
   return (
     <Container>
       <Title>
@@ -41,26 +39,26 @@ const LendSetting: React.FC<any> = (props) => {
           <Block>
             <Input
               title = {"Max Duration"}
-              value = {maxDuration}
-              onChange = {setMaxDuration}
+              value = {props.maxDuration}
+              onChange = {props.setMaxDuration}
               unit = {"Days"}
             />
             <Input
               title = {"Daily price"}
-              value = {dailyPrice}
-              onChange = {setDailyPrice}
-              unit = {"ETH"}
+              value = {props.dailyPrice}
+              onChange = {props.setDailyPrice}
+              unit = {props.priceUnit}
             />
             <Input
               title = {"Collateral"}
-              value = {collateral}
-              onChange = {setCollateral}
-              unit = {"ETH"}
+              value = {props.collateral}
+              onChange = {props.setCollateral}
+              unit = {props.priceUnit}
             />
           </Block>
           <Button 
             text="Lend Now" 
-            onClick={props.onClose}
+            onClick={() => props.setConfirm(true)}
           />
         </Section>
       </Content>
@@ -136,11 +134,6 @@ const Img = styled.img`
   box-sizing: border-box;
 `;
 
-const Lender = styled.div`
-  display: flex;
-  gap: 20px;
-`
-
 export const Text = styled.div`
   font-weight: 400;
   font-size: 14px;
@@ -156,11 +149,4 @@ export const TextClick = styled.div`
   font-size: 14px;
   color: var(--shade-2);
   cursor: pointer;
-`;
-const A = styled.a`
-  font-weight: 400;
-  font-size: 14px;
-  color: var(--shade-2);
-  cursor: pointer;
-  text-decoration: none;
 `;

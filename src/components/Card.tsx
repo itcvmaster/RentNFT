@@ -85,7 +85,17 @@ export const CollectionCard: React.FC<any> = (props: any) => {
 }
 
 export const LendCard: React.FC<any> = (props: any) => {
-  let [showModal, setShowModal] = useState(false)
+  let [showModal, setShowModal] = useState(false);
+  let [confirm, setConfirm] = useState(false);
+  const [maxDuration, setMaxDuration] = useState("0");
+  const [dailyPrice, setDailyPrice] = useState("0");
+  const [collateral, setCollateral] = useState("0");
+
+  const onOK = () => { 
+    setConfirm(false);
+    setShowModal(false);
+  }
+
   return (
     <Container>
       <CardBody>
@@ -97,21 +107,22 @@ export const LendCard: React.FC<any> = (props: any) => {
           <Title>{props.title}</Title>
           <Line>{props.author}</Line>
           <Line>
+            Max Duration
+            <div>
+              {maxDuration} {"Days"}
+            </div>
+          </Line>
+          <Line>
             Daily Price
             <div>
-              {props.dailyPrice}
-              {props.priceUnit}
+              {dailyPrice} {"ETH"}
             </div>
           </Line>
           <Line>
             Collateral
             <div>
-              {props.collateralPrice}
-              {props.priceUnit}
+              {collateral} {"ETH"}
             </div>
-          </Line>
-          <Line>
-            {props.state}
           </Line>
         </Content>
       </CardBody>
@@ -123,14 +134,24 @@ export const LendCard: React.FC<any> = (props: any) => {
           imagePath={props.imagePath}
           title={props.title}
           author={props.author}
-          dailyPrice={props.dailyPrice}
-          collateralPrice={props.collateralPrice}
-          priceUnit={props.priceUnit}
-          lenderAdd={props.lenderAdd}
-          contractAdd={props.contractAdd}
-          state={props.state}
           describe={props.describe}
-          onClose={() => setShowModal(false)}
+          priceUnit={"ETH"}
+          maxDuration={maxDuration}
+          setMaxDuration={setMaxDuration}
+          dailyPrice={dailyPrice}
+          setDailyPrice={setDailyPrice}
+          collateral={collateral}
+          setCollateral={setCollateral}
+          setConfirm={setConfirm}
+        />}
+      />
+      <Modal
+        showModal={confirm}
+        setShowModal={setConfirm}
+        content={<ConfirmWindow
+          text={"Returned correctly!"}
+          setConfirm={setConfirm}
+          onClose={onOK}
         />}
       />
     </Container >
@@ -142,6 +163,9 @@ export const LendCard: React.FC<any> = (props: any) => {
 export const PayBackCard: React.FC<any> = (props: any) => {
   let [showModal, setShowModal] = useState(false);
   let [confirm, setConfirm] = useState(false);
+
+  const duration = 7;
+  const totalAmount = duration * props.dailyPrice;
   
   const onOK = () => { 
     setConfirm(false);
@@ -172,9 +196,6 @@ export const PayBackCard: React.FC<any> = (props: any) => {
               {props.priceUnit}
             </div>
           </Line>
-          <Line>
-            {props.state}
-          </Line>
         </Content>
       </CardBody>
       <Modal
@@ -188,10 +209,10 @@ export const PayBackCard: React.FC<any> = (props: any) => {
           dailyPrice={props.dailyPrice}
           collateralPrice={props.collateralPrice}
           priceUnit={props.priceUnit}
-          lenderAdd={props.lenderAdd}
-          contractAdd={props.contractAdd}
-          state={props.state}
           describe={props.describe}
+          rentDate={"6/6/2022"}
+          duration={duration}
+          totalAmount={totalAmount}
           setConfirm={setConfirm}
         />}
       />
@@ -199,6 +220,7 @@ export const PayBackCard: React.FC<any> = (props: any) => {
         showModal={confirm}
         setShowModal={setConfirm}
         content={<ConfirmWindow
+          text={"Returned correctly!"}
           setConfirm={setConfirm}
           onClose={onOK}
         />}
