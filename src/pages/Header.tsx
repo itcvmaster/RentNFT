@@ -76,7 +76,11 @@ const Header: React.FC = () => {
   }, [isMoralisInitialized, isInitialized, isAuthenticated, authenticate]);
 
   useEffect(() => {
-    if (isMoralisInitialized && isAuthenticated && Number.parseInt(chainId || "0") !== SUPPORTED_CHAIN_ID) {
+    if (
+      isMoralisInitialized && 
+      isAuthenticated && 
+      Number.parseInt(chainId || "0") !== SUPPORTED_CHAIN_ID
+    ) {
       window.alert(`Please switch to ${NETWORK_NAMES[SUPPORTED_CHAIN_ID]}`);
     }
   }, [isInitialized, isAuthenticated, chainId, isMoralisInitialized]);
@@ -97,32 +101,32 @@ const Header: React.FC = () => {
       <Content>
         <Logo />
         <Section>
-          <Menu 
+          <Menu
             onClick={() => onClick("/")}
             isActive={tab === "/"}
           >
             Market
           </Menu>
-          <Menu 
-            onClick={() => onClick("/Collections")} 
+          <Menu
+            onClick={() => onClick("/Collections")}
             isActive={tab === "/Collections"}
           >
             Collections
           </Menu>
-          <Menu 
+          <Menu
             onClick={() => onClick("/Lend")}
             isActive={tab === "/Lend"}
           >
             Lend
           </Menu>
-          <Menu 
+          <Menu
             onClick={() => onClick("/PayBack")}
             isActive={tab === "/PayBack"}
           >
             Pay Back
           </Menu>
         </Section>
-        <Menu 
+        <Menu
           onClick={() => setShowModal(true)}
           isActive={tab === "/ConnectWallet"}
         >
@@ -221,7 +225,7 @@ const Section = styled.div`
   }
 `;
 
-const Menu = styled.div<{isActive: boolean}>`
+const Menu = styled.div<{ isActive: boolean }>`
   font-weight: ${props => props.isActive ? 700 : 300};
   font-size: 18px;
   border: 0;
