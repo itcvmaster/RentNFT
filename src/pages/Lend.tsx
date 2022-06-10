@@ -27,6 +27,7 @@ const Container = styled.div`
   display: block;
   padding: 20px 20px 50px 20px;
   box-sizing: border-box;
+  width: 100%;
 `
 
 const Content = styled.div`
@@ -37,10 +38,9 @@ const Content = styled.div`
 const Text = styled.span<{ isAuthenticated: boolean }>`
   font-size: 20px;
   display: ${props => props.isAuthenticated ? "none" : ""};
-  color: var(--shade-3)
-  align-items: center;
-  justify-content: center;
+  color: var(--shade-3);
   width: 100%;
+  text-align: center;
 `
 
 export default Lend;

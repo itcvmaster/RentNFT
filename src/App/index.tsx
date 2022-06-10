@@ -21,10 +21,6 @@ const App: React.FC<any> = () => {
 }
 
 const Content = styled.div`
-  display: flex;
-  justify-content:  center;
-  align-items: center;
-
   padding: 70px 0 0 0;
   min-height: calc(100vh - 70px - 100px);
 `

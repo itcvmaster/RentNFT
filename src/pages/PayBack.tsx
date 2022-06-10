@@ -42,10 +42,9 @@ const Content = styled.div`
 const Text = styled.span<{ isAuthenticated: boolean }>`
   font-size: 20px;
   display: ${props => props.isAuthenticated ? "none" : ""};
-  color: var(--shade-3)
-  align-items: center;
-  justify-content: center;
+  color: var(--shade-3);
   width: 100%;
+  text-align: center;
 `
 
 export default PayBack;
