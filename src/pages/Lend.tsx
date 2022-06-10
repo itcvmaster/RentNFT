@@ -1,17 +1,25 @@
 import styled from 'styled-components';
 import { useMoralis } from 'react-moralis';
-import { walletData as data} from 'utils/testData';
+import { useSelector } from 'react-redux';
+
 import { LendCard } from 'components';
 
 const Lend: React.FC<any> = () => {
+  const data = useSelector((state: any) => state.myNFTs);
   const { isAuthenticated } = useMoralis();
   return (
     <Container>
       <Content>
-        <Text isAuthenticated={isAuthenticated}>Please connect to your Wallet.</Text>
-        {isAuthenticated && data.map((_data, index) => (
+        {!isAuthenticated &&
+          <Text>
+            <span>
+              Please connect to your Wallet.
+            </span>
+          </Text>}
+        {isAuthenticated && data.map((_data: any, index: number) => (
           <LendCard
             key={index}
+            dataIndex={index}
             imagePath={_data.imagePath}
             title={_data.title}
             author={_data.author}
@@ -35,12 +43,15 @@ const Content = styled.div`
   flex-wrap: wrap;
 `
 
-const Text = styled.span<{ isAuthenticated: boolean }>`
+const Text = styled.div`
   font-size: 20px;
-  display: ${props => props.isAuthenticated ? "none" : ""};
   color: var(--shade-3);
   width: 100%;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 70px - 100px - 70px);
 `
 
 export default Lend;

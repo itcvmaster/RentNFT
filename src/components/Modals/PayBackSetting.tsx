@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
 import { Icon30x30 } from '../Icon';
 import { Button } from "components";
 import { mobile } from 'utils'
+import { Actions } from "store/types";
 
 const PayBackSetting: React.FC<any> = (props) => {
+  const { setShowModal, dataIndex, imagePath, title, author, rentDate, duration, dailyPrice, collateralPrice, priceUnit, describe, setConfirm } = props;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <Container>
       <Title>
@@ -14,51 +18,55 @@ const PayBackSetting: React.FC<any> = (props) => {
         <Span>Pay Back Setting</Span>
         <Icon30x30
           src="icons/close.svg"
-          onClick={() => props.setShowModal(false)}
+          onClick={() => setShowModal(false)}
         />
       </Title>
       <Content>
         <Section>
-          <Img src={props.imagePath} />
+          <Img src={imagePath} />
         </Section>
         <Section>
           <Block>
             <TextClick
               onClick={() => {
-                navigate("/Collections/" + props.author)
+                navigate("/Collections/" + author)
                 props.setShowModal(false)
               }}
             >
-              {props.author}
+              {author}
             </TextClick>
-            <TextBlack>{props.title}</TextBlack>
-            <Text>{props.describe}</Text>
+            <TextBlack>{title}</TextBlack>
+            <Text>{describe}</Text>
           </Block>
           <Block>
             <Line>
               <Text>Rent Date</Text>
-              <Text>{props.rentDate}</Text>
+              <Text>{rentDate}</Text>
             </Line>
             <Line>
               <Text>Duration</Text>
-              <Text>{props.duration} Days</Text>
+              <Text>{duration} Days</Text>
             </Line>
             <Line>
               <Text>Daily Price</Text>
-              <Text>{props.dailyPrice} {props.priceUnit}</Text>
+              <Text>{dailyPrice} {priceUnit}</Text>
             </Line>
             <Line>
               <Text>Collateral Price</Text>
-              <Text>{props.collateralPrice} {props.priceUnit}</Text>
+              <Text>{collateralPrice} {priceUnit}</Text>
             </Line>
             <Line>
               <Text>Total Amount</Text>
-              <Text>{props.duration * props.dailyPrice} {props.priceUnit}</Text>
+              <Text>{duration * dailyPrice} {priceUnit}</Text>
             </Line>
           </Block>
           <Button
             text="Pay Back"
-            onClick={() => props.setConfirm(true)}
+            onClick={() => {
+              dispatch({ type: Actions.PAYBACK_NFT, dataIndex: dataIndex });
+              setShowModal(false);
+              setConfirm(true);
+            }}
           />
         </Section>
       </Content>

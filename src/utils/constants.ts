@@ -52,7 +52,7 @@ export const NETWORK_NAMES = {
   4: "rinkeby"
 };
 
-export const SUPPORTED_CHAIN_ID = 4;
+export const SUPPORTED_CHAIN_ID = 1;
 
 export const CONNECT_WALLET_TYPE = {
   unConnected: "Connect Wallet",

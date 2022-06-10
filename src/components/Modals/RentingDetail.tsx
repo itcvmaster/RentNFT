@@ -1,12 +1,19 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { useMoralis } from 'react-moralis';
 
 import { Icon30x30 } from '../Icon';
 import { Button, Input } from "components";
 import { mobile } from 'utils'
+import { Actions } from "store/types";
 
 const RentingDetail: React.FC<any> = (props) => {
+  const { setShowModal, imagePath, title, author, maxDuration, dailyPrice, collateralPrice, priceUnit, lenderAdd, contractAdd, state, describe, setConfirm } = props;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useMoralis();
+
   return (
     <Container>
       <Title>
@@ -14,62 +21,69 @@ const RentingDetail: React.FC<any> = (props) => {
         <Span>Renting Details</Span>
         <Icon30x30
           src="icons/close.svg"
-          onClick={() => props.setShowModal(false)}
+          onClick={() => setShowModal(false)}
         />
       </Title>
       <Content>
         <Section>
-          <Img src={props.imagePath} />
+          <Img src={imagePath} />
         </Section>
         <Section>
           <Block>
             <Lender>
-              <Text>{props.lenderAdd ? "Lender" : ""}</Text>
+              <Text>{lenderAdd ? "Lender" : ""}</Text>
               <A
-                href={props.lenderAdd ? "https://etherscan.io/address/" + props.lenderAdd : ""}
+                href={lenderAdd ? "https://etherscan.io/address/" + lenderAdd : ""}
                 target="_blank"
               >
-                {props.lenderAdd ? props.lenderAdd.slice(0, 5) + "..." + props.lenderAdd.slice(props.lenderAdd.length - 3) : ""}
+                {lenderAdd ? lenderAdd.slice(0, 5) + "..." + lenderAdd.slice(lenderAdd.length - 3) : ""}
               </A>
             </Lender>
             <TextClick
               onClick={() => {
-                navigate("/Collections/" + props.author)
-                props.setShowModal(false)
+                navigate("/Collections/" + author)
+                setShowModal(false)
               }}
             >
-              {props.author}
+              {author}
             </TextClick>
-            <TextBlack>{props.title}</TextBlack>
+            <TextBlack>{title}</TextBlack>
             <A
-              href={props.contractAdd ? "https://etherscan.io/address/" + props.contractAdd : ""}
+              href={contractAdd ? "https://etherscan.io/address/" + contractAdd : ""}
               target="_blank"
             >
-              {props.contractAdd ? props.contractAdd.slice(0, 5) + "..." + props.contractAdd.slice(props.contractAdd.length - 3) : ""}
+              {contractAdd ? contractAdd.slice(0, 5) + "..." + contractAdd.slice(contractAdd.length - 3) : ""}
             </A>
-            <Text>{props.describe}</Text>
+            <Text>{describe}</Text>
           </Block>
           <Block>
             <Input
-              title = "Rent Duration"
-              unit = "Days"
+              title="Rent Duration"
+              unit="Days"
             />
             <Line>
               <Text>Max Duration</Text>
-              <Text>{props.maxDuration} Days</Text>
+              <Text>{maxDuration} Days</Text>
             </Line>
             <Line>
               <Text>Daily price</Text>
-              <Text>{props.dailyPrice} {props.priceUnit}</Text>
+              <Text>{dailyPrice} {priceUnit}</Text>
             </Line>
             <Line>
               <Text>Collateral</Text>
-              <Text>{props.collateralPrice} {props.priceUnit}</Text>
+              <Text>{collateralPrice} {priceUnit}</Text>
             </Line>
           </Block>
-          <Button 
-            text="Rent Now" 
-            onClick={() => props.setShowModal(false)}
+          <Button
+            text="Rent Now"
+            disabled={state === "Rented"}
+            onClick={() => {
+              if (isAuthenticated) {
+                dispatch({ type: Actions.BUY_NFT, title: title });
+                setShowModal(false);
+              }
+              setConfirm(true);
+            }}
           />
         </Section>
       </Content>

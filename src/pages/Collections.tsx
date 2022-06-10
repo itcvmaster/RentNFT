@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { CollectionCard } from 'components';
-import { marketData as data} from 'utils/testData';
 
 const Collections: React.FC<any> = () => {
+  const data = useSelector((state: any) => state.marketNFTs);
   const navigate = useNavigate();
   const collectionData = useMemo(() => {
     let newsArr = [];
@@ -17,7 +18,7 @@ const Collections: React.FC<any> = () => {
       }
     }
     return newsArr;
-  }, [])
+  }, [data])
   return (
     <Container>
       <Content>

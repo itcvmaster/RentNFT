@@ -25,16 +25,4 @@ export const ButtonStyle = styled.button`
   font-weight: 400;
   font-size: 16px;
   transition: 0.15s ease-in-out;
-
-  :hover {
-    filter: brightness(130%);
-  }
-
-  :active {
-    filter: brightness(80%);
-  }
-
-  :disabled {
-    filter: brightness(40%);
-  }
 `;

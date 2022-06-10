@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { Filter, MarketCard } from 'components';
 import { useMemo, useState } from 'react';
-import { marketData as data} from 'utils/testData';
 
 const Market: React.FC<any> = () => {
+  const data = useSelector((state: any) => state.marketNFTs);
   const id = useParams().id || "";
   const [searchData, setSearchData] = useState(data);
   const [filterData, setFilterData] = useState(searchData);
@@ -19,7 +20,7 @@ const Market: React.FC<any> = () => {
       }
       return tempArr;
     }
-  }, [id, filterData])
+  }, [id, data, filterData])
 
   return (
     <Container>

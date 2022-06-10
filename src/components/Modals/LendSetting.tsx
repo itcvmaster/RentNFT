@@ -1,10 +1,15 @@
 import styled from "styled-components";
+import { useDispatch } from 'react-redux';
 
 import { Icon30x30 } from '../Icon';
 import { Button, Input } from "components";
 import { mobile } from 'utils'
+import { Actions } from "store/types";
 
 const LendSetting: React.FC<any> = (props) => {
+  const { dataIndex, setShowModal, imagePath, title, author, describe, setConfirm } = props;
+  const dispatch = useDispatch();
+
   return (
     <Container>
       <Title>
@@ -12,38 +17,42 @@ const LendSetting: React.FC<any> = (props) => {
         <Span>Lend Setting</Span>
         <Icon30x30
           src="icons/close.svg"
-          onClick={() => props.setShowModal(false)}
+          onClick={() => setShowModal(false)}
         />
       </Title>
       <Content>
         <Section>
-          <Img src={props.imagePath} />
+          <Img src={imagePath} />
         </Section>
         <Section>
           <Block>
             <TextClick >
-              {props.author}
+              {author}
             </TextClick>
-            <TextBlack>{props.title}</TextBlack>
-            <Text>{props.describe}</Text>
+            <TextBlack>{title}</TextBlack>
+            <Text>{describe}</Text>
           </Block>
           <Block>
             <Input
-              title = "Max Duration"
-              unit = "Days"
+              title="Max Duration"
+              unit="Days"
             />
             <Input
-              title = "Daily price"
-              unit = "ETH"
+              title="Daily price"
+              unit="ETH"
             />
             <Input
-              title = "Collateral"
-              unit = "ETH"
+              title="Collateral"
+              unit="ETH"
             />
           </Block>
-          <Button 
-            text="Lend Now" 
-            onClick={() => props.setConfirm(true)}
+          <Button
+            text="Lend Now"
+            onClick={() => {
+              dispatch({ type: Actions.LEND_NFT, dataIndex: dataIndex });
+              setShowModal(false);
+              setConfirm(true);
+            }}
           />
         </Section>
       </Content>

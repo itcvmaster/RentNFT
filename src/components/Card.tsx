@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useMoralis } from 'react-moralis';
 
 import { Icon15x15 } from './Icon';
 import Modal from './Modals';
@@ -10,34 +11,40 @@ import PayBackSetting from './Modals/PayBackSetting';
 import ConfirmWindow from 'components/Modals/ConfirmWindow'
 
 export const MarketCard: React.FC<any> = (props: any) => {
+  const { imagePath, title, author, maxDuration, dailyPrice, collateralPrice, priceUnit, lenderAdd, contractAdd, state, describe } = props;
   let [showModal, setShowModal] = useState(false);
-
+  let [confirm, setConfirm] = useState(false);
+  const { isAuthenticated } = useMoralis();
+  const onOK = () => {
+    setConfirm(false);
+    setShowModal(false);
+  }
   return (
     <Container>
       <CardBody>
         <Img
-          src={props.imagePath}
+          src={imagePath}
           onClick={() => setShowModal(true)}
         />
         <Content>
-          <Title>{props.title}</Title>
-          <Line>{props.author}</Line>
+          <Title>{title}</Title>
+          <Line>{author}</Line>
           <Line>
             Daily Price
             <div>
-              {props.dailyPrice}
-              {props.priceUnit}
+              {dailyPrice}
+              {priceUnit}
             </div>
           </Line>
           <Line>
             Collateral
             <div>
-              {props.collateralPrice}
-              {props.priceUnit}
+              {collateralPrice}
+              {priceUnit}
             </div>
           </Line>
           <Line>
-            {props.state}
+            {state}
           </Line>
         </Content>
       </CardBody>
@@ -46,34 +53,46 @@ export const MarketCard: React.FC<any> = (props: any) => {
         setShowModal={setShowModal}
         content={<RentingDetail
           setShowModal={setShowModal}
-          imagePath={props.imagePath}
-          title={props.title}
-          author={props.author}
-          maxDuration={props.maxDuration}
-          dailyPrice={props.dailyPrice}
-          collateralPrice={props.collateralPrice}
-          priceUnit={props.priceUnit}
-          lenderAdd={props.lenderAdd}
-          contractAdd={props.contractAdd}
-          state={props.state}
-          describe={props.describe}
+          imagePath={imagePath}
+          title={title}
+          author={author}
+          maxDuration={maxDuration}
+          dailyPrice={dailyPrice}
+          collateralPrice={collateralPrice}
+          priceUnit={priceUnit}
+          lenderAdd={lenderAdd}
+          contractAdd={contractAdd}
+          state={state}
+          describe={describe}
+          setConfirm={setConfirm}
         />}
+      />
+      <Modal
+        showModal={confirm}
+        setShowModal={setConfirm}
+        content={
+          <ConfirmWindow
+            text={isAuthenticated ? "Rented Sucessfully!" : "Please connect to your Wallet."}
+            setConfirm={setConfirm}
+            onClose={onOK}
+          />}
       />
     </Container >
   );
 }
 export const CollectionCard: React.FC<any> = (props: any) => {
+  const { imagePath, author, onClick } = props;
   return (
     <Container>
       <CardBody>
         <Img
-          src={props.imagePath}
-          onClick={props.onClick}
+          src={imagePath}
+          onClick={onClick}
         />
         <Content>
-          <Title>{props.author}</Title>
+          <Title>{author}</Title>
           <Opensea
-            href={"https://opensea.io/collection/" + props.author.toLowerCase()}
+            href={"https://opensea.io/collection/" + author.toLowerCase()}
             target="_blank"
           >
             <Icon15x15 src="icons/opensea.svg" />
@@ -85,6 +104,7 @@ export const CollectionCard: React.FC<any> = (props: any) => {
   );
 }
 export const LendCard: React.FC<any> = (props: any) => {
+  const { dataIndex, imagePath, title, author, describe } = props;
   let [showModal, setShowModal] = useState(false);
   let [confirm, setConfirm] = useState(false);
   const onOK = () => {
@@ -95,11 +115,11 @@ export const LendCard: React.FC<any> = (props: any) => {
     <Container>
       <CardBody>
         <Img
-          src={props.imagePath}
+          src={imagePath}
           onClick={() => setShowModal(true)}
         />
         <Content>
-          <Title>{props.title}</Title>
+          <Title>{title}</Title>
         </Content>
       </CardBody>
       <Modal
@@ -107,11 +127,12 @@ export const LendCard: React.FC<any> = (props: any) => {
         setShowModal={setShowModal}
         content={
           <LendSetting
+            dataIndex={dataIndex}
             setShowModal={setShowModal}
-            imagePath={props.imagePath}
-            title={props.title}
-            author={props.author}
-            describe={props.describe}
+            imagePath={imagePath}
+            title={title}
+            author={author}
+            describe={describe}
             setConfirm={setConfirm}
           />}
       />
@@ -128,6 +149,7 @@ export const LendCard: React.FC<any> = (props: any) => {
   );
 }
 export const PayBackCard: React.FC<any> = (props: any) => {
+  const { dataIndex, imagePath, title, author, maxDuration, dailyPrice, collateralPrice, priceUnit, lenderAdd, contractAdd, state, describe } = props;
   let [showModal, setShowModal] = useState(false);
   let [confirm, setConfirm] = useState(false);
   const onOK = () => {
@@ -138,11 +160,11 @@ export const PayBackCard: React.FC<any> = (props: any) => {
     <Container>
       <CardBody>
         <Img
-          src={props.imagePath}
+          src={imagePath}
           onClick={() => setShowModal(true)}
         />
         <Content>
-          <Title>{props.title}</Title>
+          <Title>{title}</Title>
         </Content>
       </CardBody>
       <Modal
@@ -151,30 +173,32 @@ export const PayBackCard: React.FC<any> = (props: any) => {
         content={
           <PayBackSetting
             setShowModal={setShowModal}
-            imagePath={props.imagePath}
-            title={props.title}
-            author={props.author}
-            maxDuration={props.maxDuration}
+            dataIndex={dataIndex}
+            imagePath={imagePath}
+            title={title}
+            author={author}
+            maxDuration={maxDuration}
             rentDate={"6/6/2022"}
             duration={3}
-            dailyPrice={props.dailyPrice}
-            collateralPrice={props.collateralPrice}
-            priceUnit={props.priceUnit}
-            lenderAdd={props.lenderAdd}
-            contractAdd={props.contractAdd}
-            state={props.state}
-            describe={props.describe}
+            dailyPrice={dailyPrice}
+            collateralPrice={collateralPrice}
+            priceUnit={priceUnit}
+            lenderAdd={lenderAdd}
+            contractAdd={contractAdd}
+            state={state}
+            describe={describe}
             setConfirm={setConfirm}
           />}
       />
       <Modal
         showModal={confirm}
         setShowModal={setConfirm}
-        content={<ConfirmWindow
-          text="Returned Sucessfully!"
-          setConfirm={setConfirm}
-          onClose={onOK}
-        />}
+        content={
+          <ConfirmWindow
+            text="Returned Sucessfully!"
+            setConfirm={setConfirm}
+            onClose={onOK}
+          />}
       />
     </Container >
   );

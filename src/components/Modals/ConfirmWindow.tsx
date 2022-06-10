@@ -1,27 +1,11 @@
 import styled from "styled-components";
-import { useEffect, useRef } from "react";
 
 import { mobileSmall } from 'utils';
 import Button from "components/Button";
 
 const ConfirmWindow: React.FC<any> = (props) => {
-
-  const selector: any = useRef(null);
-  const onClickOutside = (e: any) => {
-    if (!selector || !selector?.current) return;
-    if (!selector.current.contains(e.target)) {
-      props.setConfirm(false);
-    }
-  }
-  useEffect(() => {
-    document.addEventListener("mousedown", onClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", onClickOutside);
-    }
-  });
-
   return (
-    <Container ref={selector}>
+    <Container>
       <Card>
         <Text>{props.text}</Text>
         <Button 
@@ -37,7 +21,7 @@ export default ConfirmWindow;
 
 const Container = styled.div`
   width: 400px;
-  max-height: 600px;
+  height: 200px;
   display: block;
   box-shadow: 0 8px 36px #e4e4e4;
   background: var(--shade-8);
@@ -54,13 +38,10 @@ const Text = styled.div`
 `;
 const Card = styled.div`
   cursor: pointer;
-  width: 100%;
-  height: 150px;
-  padding: 20px;
+  padding: 40px 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
+  gap: 50px;
 `
