@@ -1,13 +1,18 @@
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 import { useMoralis } from 'react-moralis';
 import { useSelector } from 'react-redux';
 
 import { DefaultCard } from 'components';
 import { Actions } from 'store/types';
 
-const PayBack: React.FC<any> = () => {
-  const data = useSelector((state: any) => state.rentNFTs);
+const Wallet: React.FC<any> = () => {
+  const id = useParams().id || "";
+  const lendData = useSelector((state: any) => state.myNFTs);
+  const payBackData = useSelector((state: any) => state.rentNFTs);
+  const data = id === "Lend" ? lendData : payBackData;
   const { isAuthenticated } = useMoralis();
+
   return (
     <Container>
       <Content>
@@ -17,10 +22,10 @@ const PayBack: React.FC<any> = () => {
               Please connect to your Wallet.
             </span>
           </Text>}
-          {isAuthenticated && data.map((_data: any, index: number) => (
+        {isAuthenticated && data.map((_data: any, index: number) => (
           <DefaultCard
             key={index}
-            action={Actions.PAYBACK_NFT}
+            action={id === "Lend" ? Actions.LEND_NFT : Actions.PAYBACK_NFT}
             dataIndex={index}
             data={_data}
           />
@@ -34,6 +39,7 @@ const Container = styled.div`
   display: block;
   padding: 20px 20px 50px 20px;
   box-sizing: border-box;
+  width: 100%;
 `
 
 const Content = styled.div`
@@ -52,4 +58,4 @@ const Text = styled.div`
   min-height: calc(100vh - 70px - 100px - 70px);
 `
 
-export default PayBack;
+export default Wallet;

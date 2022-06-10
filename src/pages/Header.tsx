@@ -115,14 +115,14 @@ const Header: React.FC = () => {
             Collections
           </Menu>
           <Menu
-            onClick={() => onClick("/Lend")}
-            isActive={tab === "/Lend"}
+            onClick={() => onClick("/Wallet/Lend")}
+            isActive={tab === "/Wallet/Lend"}
           >
             Lend
           </Menu>
           <Menu
-            onClick={() => onClick("/PayBack")}
-            isActive={tab === "/PayBack"}
+            onClick={() => onClick("/Wallet/PayBack")}
+            isActive={tab === "/Wallet/PayBack"}
           >
             Pay Back
           </Menu>
@@ -152,14 +152,14 @@ const Header: React.FC = () => {
           Collections
         </MobileMenu>
         <MobileMenu
-          onClick={() => onClick("/Lend")}
-          isActive={tab === "/Lend"}
+          onClick={() => onClick("/Wallet/Lend")}
+          isActive={tab === "/Wallet/Lend"}
         >
           Lend
         </MobileMenu>
         <MobileMenu
-          onClick={() => onClick("/PayBack")}
-          isActive={tab === "/PayBack"}
+          onClick={() => onClick("/Wallet/PayBack")}
+          isActive={tab === "/Wallet/PayBack"}
         >
           Pay Back
         </MobileMenu>

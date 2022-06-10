@@ -3,8 +3,7 @@ import { RouteObject, useRoutes } from 'react-router-dom';
 import {
   Market,
   Collections,
-  Lend,
-  PayBack
+  Wallet
 } from 'pages';
 
 const routes: RouteObject[] = [
@@ -29,13 +28,8 @@ const routes: RouteObject[] = [
     children: [],
   },
   {
-    path: "/Lend",
-    element: <Lend />,
-    children: [],
-  },
-  {
-    path: "/PayBack",
-    element: <PayBack />,
+    path: "/Wallet/:id",
+    element: <Wallet />,
     children: [],
   },
 ];

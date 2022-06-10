@@ -1,6 +1,5 @@
 import Collections from "./Collections";
 import Market from "./Market";
-import Lend from "./Lend";
-import PayBack from "./PayBack";
+import Wallet from "./Wallet";
 
-export { Collections, Market, Lend, PayBack };
+export { Collections, Market, Wallet };
