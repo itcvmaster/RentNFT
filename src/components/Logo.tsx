@@ -22,9 +22,10 @@ const Container = styled.div`
 `;
 
 const Text = styled.div`
-  font-weight: 400;
-  font-size: 22px;
+  font-weight: 600;
+  font-size: 24px;
   color: var(--shade-7);
+  font-family: dance;
 `;
 
 export default Logo;

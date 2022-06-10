@@ -37,6 +37,11 @@ const GlobalStyles = createGlobalStyle`
     font-family: inter;  
     src: url('/fonts/Inter-Regular.ttf');
   }
+
+  @font-face {
+    font-family: dance;
+    src: url('/fonts/DancingScript-Bold.ttf');
+  }
 }
 `;
 
