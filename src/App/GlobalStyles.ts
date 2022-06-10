@@ -30,12 +30,12 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
     color: var(--shade-1);
-    font-family: myFont;
+    font-family: inter;
   };
 
   @font-face {
-    font-family: myFont;  
-    src: url('/fonts/Pridi-Regular.ttf');
+    font-family: inter;  
+    src: url('/fonts/Inter-Regular.ttf');
   }
 }
 `;

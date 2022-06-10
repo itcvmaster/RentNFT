@@ -8,4 +8,4 @@ import Selector from "./Selector";
 import Modal from "./Modals";
 import { Input } from "./Input";
 
-export { Button, Search, Logo, Filter, Icon, MarketCard, CollectionCard, Selector, Modal, Input, LendCard, PayBackCard };
+export { Button, Search, Logo, Filter, Icon, MarketCard, CollectionCard, LendCard, PayBackCard, Selector, Modal, Input };

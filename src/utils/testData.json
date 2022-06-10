@@ -4,9 +4,10 @@
     "author": "zorbs-v2",
     "title": "Zorb #13132",
     "state": "Available",
+    "maxDuration": 7,
     "dailyPrice": 0.05,
     "collateralPrice": 0,
-    "priceUnit": "WETH",
+    "priceUnit": "ETH",
     "lenderAdd":"0xec3d3b8c12ff13854d11a5d105f678fa4b2f80d9",
     "contractAdd":"0xca21d4228cdcc68d4e23807e5e370c07577dd152",
     "describe": "Zorbs were distributed for free by ZORA on New Year's 2022. Each NFT imbues the properties of its wallet holder, and when sent to someone else, will transform. View this NFT at zorb.dev/nft/13132"
@@ -16,9 +17,10 @@
     "author": "coolcookies",
     "title": "Cool Cookie #4474",
     "state": "Available",
+    "maxDuration": 7,
     "dailyPrice": 0.003,
     "collateralPrice": 0.005,
-    "priceUnit": "WETH",
+    "priceUnit": "ETH",
     "lenderAdd":"0xe1e31d99f960461be48748b058eab0152d373c75",
     "contractAdd":"0xf880b2a16f257d0b9b8ab64351a07a4137527c82",
     "describe": "Cool Cookies is a community-driven PFP project that grants you access to the largest Cookie Jar on the Ethereum Blockchain! Holders will be able to participate in a community-funded DAO, exclusive events, giveaways and more!"
@@ -28,9 +30,10 @@
     "author": "Cyberzuki2077",
     "title": "Cyberzuki #37",
     "state": "Rented",
+    "maxDuration": 7,
     "dailyPrice": 1,
     "collateralPrice": 100,
-    "priceUnit": "DAI",
+    "priceUnit": "ETH",
     "describe": "3777 Cyberzukis seizing their destiny to revolt against the evil machines!3777 Cyberzukis seizing their destiny to revolt against the evil machines!"
   },
   {
@@ -38,9 +41,10 @@
     "author": "Officialtimelessapeclub",
     "title": "Timeless Ape #3877",
     "state": "Available",
+    "maxDuration": 7,
     "dailyPrice": 1,
     "collateralPrice": 300,
-    "priceUnit": "USDT",
+    "priceUnit": "ETH",
     "describe": "Timeless Ape Club is a collection of 5555 unique, algorithmically generated Timeless Apes, uniting watch fanatics globally. Our core mission is to bridge the physical world and the virtual metaverse with our exclusive NFT collection."
   },
   {
@@ -48,9 +52,10 @@
     "author": "zora",
     "title": "Pony",
     "state": "Available",
+    "maxDuration": 7,
     "dailyPrice": 1,
     "collateralPrice": 15,
-    "priceUnit": "USDC",
+    "priceUnit": "ETH",
     "describe": ""
   },
   {
@@ -58,9 +63,10 @@
     "author": "vacation-palette-nft",
     "title": "Vacation Palette NFT #198",
     "state": "Available",
+    "maxDuration": 7,
     "dailyPrice": 20,
     "collateralPrice": 500,
-    "priceUnit": "DAI",
+    "priceUnit": "ETH",
     "describe": "Vacation Palette NFT is a collection of 300 user-generated HTML canvas art pieces on Ethereum.Vacation Palette NFT is a collection of 300 user-generated HTML canvas art pieces on Ethereum."
   },
   {
@@ -68,9 +74,10 @@
     "author": "zora",
     "title": "Misaka",
     "state": "Available",
+    "maxDuration": 7,
     "dailyPrice": 1,
     "collateralPrice": 15,
-    "priceUnit": "USDC",
+    "priceUnit": "ETH",
     "describe": ""
   },
   {
@@ -78,9 +85,10 @@
     "author": "zora",
     "title": "Sora Light",
     "state": "Available",
+    "maxDuration": 7,
     "dailyPrice": 1,
     "collateralPrice": 15,
-    "priceUnit": "USDC",
+    "priceUnit": "ETH",
     "describe": ""
   },
   {
@@ -88,9 +96,10 @@
     "author": "sno-demon",
     "title": "Sno Demon #2735",
     "state": "Available",
+    "maxDuration": 7,
     "dailyPrice": 0.05,
     "collateralPrice": 0.135,
-    "priceUnit": "WETH",
+    "priceUnit": "ETH",
     "describe": "Sno Demons are the companions to SuperYeti. Even though the Sno Demons are smaller than the Yeti they are ferocious beasts that often protect the yeti as the two have formed an symbiotic relationship. Each Sno Demon is unique and holds the key to future breeding in the Yetiverse."
   },
   {
@@ -98,9 +107,10 @@
     "author": "a0k1verse-passport",
     "title": "Passport #1125",
     "state": "Available",
+    "maxDuration": 7,
     "dailyPrice": 0.07,
     "collateralPrice": 0.2,
-    "priceUnit": "WETH",
+    "priceUnit": "ETH",
     "describe": ""
   }
 ]

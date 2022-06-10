@@ -22,6 +22,7 @@ const App: React.FC<any> = () => {
 
 const Content = styled.div`
   padding: 70px 0 0 0;
+  min-height: 560px;
 `
 
 export default App;

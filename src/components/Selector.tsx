@@ -111,9 +111,8 @@ const Select = styled.div`
   font-weight: 400;
   padding: 0 18px;
   gap: 10px;
-
   :hover {
-    backdrop-filter: brightness(3);
+    color: var(--shade-0)
   }
 `
 

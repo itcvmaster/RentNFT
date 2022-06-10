@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Filter, CollectionCard } from 'components';
-import data from '../utils/testData.json';
+import { CollectionCard } from 'components';
+import data from 'utils/testData.json';
 
 const Collections: React.FC<any> = () => {
   const navigate = useNavigate();
@@ -18,19 +18,10 @@ const Collections: React.FC<any> = () => {
     }
     return newsArr;
   }, [])
-  const [searchData, setSearchData] = useState(data);
-  const [filterData, setFilterData] = useState(collectionData);
   return (
     <Container>
-      <Filter
-        data={collectionData}
-        searchData={searchData}
-        setSearchData={setSearchData}
-        setFilterData={setFilterData}
-        isMarket={false}
-      />
       <Content>
-        {filterData.map((_data, index) => (
+        {collectionData.map((_data, index) => (
           <CollectionCard
             key={index}
             imagePath={_data.imagePath}
@@ -45,7 +36,7 @@ const Collections: React.FC<any> = () => {
 
 const Container = styled.div`
   display: block;
-  padding: var(--padding);
+  padding: 20px 20px 50px 20px;
   padding-bottom: 50px;
   box-sizing: border-box;
 `

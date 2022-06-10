@@ -36,14 +36,14 @@ export const TwitterUrl = "https://twitter.com/renftlabs";
 export const LinkedinUrl = "https://twitter.com/renftlabs";
 
 export const MORALIS_TEST_SERVER = {
-  serverUrl: "https://aqk3pimd59ws.usemoralis.com:2053/server",
-  appId: "1P8UYiOt87RheKZ1UVBVoq5ApYsrsK2ixfq13wxi",
-  masterKey: "UnOmZXn94fGQ1jqznqRVEfNiRgVUeZcIB8Wi54ws",
-  dashboardUser: "G5lg5gOYeb",
-  dashboardPassword: "ACqRrHJirn",
+  serverUrl: "https://3q4jb1aybome.usemoralis.com:2053/server",
+  appId: "cantrdNh18JiW5QGDXLUSW5Fj3H6zegkjS6TrqUQ",
+  masterKey: "QfkM3L7nI9c7VybfFJIZlf0an5BaloKCybLHQYYU",
+  dashboardUser: "Jb3eDedkDQ",
+  dashboardPassword: "PM9fVONL0B",
   cliApi: "Zx9pwWhPlE9jkzS",
   cliApiSecret: "hrqc0joZoN7syIq",
-  mongoDbIp: "167.99.15.64:56728",
+  mongoDbIp: "142.93.11.181:56728",
 }
 
 export const NETWORK_NAMES = {
@@ -57,30 +57,4 @@ export const SUPPORTED_CHAIN_ID = 1;
 export const CONNECT_WALLET_TYPE = {
   unConnected: "Connect Wallet",
   connecting: "Connecting..."
-}
-
-export const DATA_TYPE = [
-  "imagePath",
-  "author",
-  "title",
-  "state",
-  "dailyPrice",
-  "collateralPrice",
-  "priceUnit",
-  "lenderAdd",
-  "contractAdd",
-  "describe"
-]
-
-export interface DataFormat {
-  imagePath: string,
-  author: string,
-  title: string,
-  state: string,
-  dailyPrice: number,
-  collateralPrice: number,
-  priceUnit: string,
-  lenderAdd: string,
-  contractAdd: string,
-  describe?: string
 }

@@ -90,6 +90,7 @@ const Header: React.FC = () => {
   const onClick = (pageName: string) => {
     navigate(pageName);
     selectTab(pageName);
+    setShowMobileMenu(false)
   };
 
   return (
@@ -139,24 +140,36 @@ const Header: React.FC = () => {
       </Content>
       {showMobileMenu && <MobileMenuGroup>
         <MobileMenu
-          onClick={() => {
-            navigate("/")
-            setShowMobileMenu(false)
-          }}>
+          onClick={() => onClick("/")}
+          isActive={tab === "/"}
+        >
           Maket
         </MobileMenu>
         <MobileMenu
-          onClick={() => {
-            navigate("/Collections")
-            setShowMobileMenu(false)
-          }}>
+          onClick={() => onClick("/Collections")}
+          isActive={tab === "/Collections"}
+        >
           Collections
+        </MobileMenu>
+        <MobileMenu
+          onClick={() => onClick("/Lend")}
+          isActive={tab === "/Lend"}
+        >
+          Lend
+        </MobileMenu>
+        <MobileMenu
+          onClick={() => onClick("/PayBack")}
+          isActive={tab === "/PayBack"}
+        >
+          Pay Back
         </MobileMenu>
         <MobileMenu
           onClick={() => {
             setShowModal(true)
             setShowMobileMenu(false)
-          }}>
+          }}
+          isActive={tab === "/ConnectWallet"}
+        >
           {isAuthenticated ? account?.slice(0, 5) + "..." + account?.slice(account.length - 3) : (isConnecting ? CONNECT_WALLET_TYPE.connecting : CONNECT_WALLET_TYPE.unConnected)}
         </MobileMenu>
       </MobileMenuGroup>
@@ -182,7 +195,7 @@ const Container = styled.div<{ isMobile: boolean }>`
   top: 0;
   box-sizing: border-box;
   width: 100%;
-  height: ${(props) => props.isMobile ? "220px" : "70px"};
+  height: ${(props) => props.isMobile ? "300px" : "70px"};
   padding: var(--padding);
   background: var(--blue);
   color: var(--shade-8);
@@ -202,16 +215,16 @@ const MobileMenuGroup = styled.div`
   flex-direction: column;
   gap: 20px;
 `
-const MobileMenu = styled.div`
+const MobileMenu = styled.div<{ isActive: boolean }>`
   font-weight: 300;
   font-size: 18px;
   border: 0;
   cursor: pointer; 
   user-select: none;
   background: transparent;
-  color: var(--shade-7);
+  color: ${props => props.isActive ? "var(--shade-8)" : "var(--shade-5)"};
   :hover {
-    color: var(--hover);
+    color: var(--shade-8);
   }
 `
 
@@ -219,20 +232,23 @@ const Section = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
-  gap: 50px;
+  gap: 40px;
   ${mobile} {
     gap: 20px;
   }
 `;
 
 const Menu = styled.div<{ isActive: boolean }>`
-  font-weight: ${props => props.isActive ? 700 : 300};
+  font-weight: 300;
   font-size: 18px;
   border: 0;
   cursor: pointer; 
   user-select: none;
   background: transparent;
-  color: var(--shade-7);
+  color: ${props => props.isActive ? "var(--shade-8)" : "var(--shade-5)"};
+  :hover {
+    color: var(--shade-8)
+  }
   ${mobile} {
     display: none;
   }
