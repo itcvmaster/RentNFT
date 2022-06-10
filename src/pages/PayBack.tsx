@@ -8,7 +8,7 @@ const PayBack: React.FC<any> = () => {
   return (
     <Container>
       <Content>
-        <Text isAuthenticated={isAuthenticated}>Nothing to show. Please connect to your Wallet.</Text>
+        <Text isAuthenticated={isAuthenticated}>Please connect to your Wallet.</Text>
         {isAuthenticated && data.map((_data, index) => (
           <PayBackCard
             key={index}
