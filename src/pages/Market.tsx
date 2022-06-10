@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { Filter, MarketCard } from 'components';
 import { useMemo, useState } from 'react';
-import data from 'utils/testData.json';
+import { marketData as data} from 'utils/testData';
 
 const Market: React.FC<any> = () => {
   const id = useParams().id || "";

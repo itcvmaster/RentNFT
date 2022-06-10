@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { CollectionCard } from 'components';
-import data from 'utils/testData.json';
+import { marketData as data} from 'utils/testData';
 
 const Collections: React.FC<any> = () => {
   const navigate = useNavigate();

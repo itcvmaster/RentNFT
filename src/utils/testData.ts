@@ -1,4 +1,4 @@
-[
+export const marketData = [
   {
     "imagePath": "https://openseauserdata.com/files/94e937f59f76b79fac37fa61f52dfc9b.svg",
     "author": "zorbs-v2",
@@ -113,4 +113,109 @@
     "priceUnit": "ETH",
     "describe": ""
   }
-]
+];
+
+export const walletData = [
+  {
+    "imagePath": "https://lh3.googleusercontent.com/2oPrZenrx03xMPT6TWe11N1aEOoGTX5i-aUo9WORlXIqRnPCQL4Z6CvjBe8b9dsJeatcHRfZ-oHI8tEx96e8GT8ptxneSWZyDCnMYg=s250",
+    "author": "vacation-palette-nft",
+    "title": "Vacation Palette NFT #198",
+    "state": "Available",
+    "maxDuration": 7,
+    "dailyPrice": 20,
+    "collateralPrice": 500,
+    "priceUnit": "ETH",
+    "describe": "Vacation Palette NFT is a collection of 300 user-generated HTML canvas art pieces on Ethereum.Vacation Palette NFT is a collection of 300 user-generated HTML canvas art pieces on Ethereum."
+  },
+  {
+    "imagePath": "https://lh3.googleusercontent.com/NBG-M-DV87izSgwhJYfHBBje9xQTugLLzTBPRoLLOmI3ScJ2tv69IDLiNkZjHKyr1kI1LO80S6rnUdeidsclQUoyj7a0MbGKIiIWHds=s250",
+    "author": "zora",
+    "title": "Misaka",
+    "state": "Available",
+    "maxDuration": 7,
+    "dailyPrice": 1,
+    "collateralPrice": 15,
+    "priceUnit": "ETH",
+    "describe": ""
+  },
+  {
+    "imagePath": "https://lh3.googleusercontent.com/HMdoJBZJAcKDq6ysKupaWgIX8X4VBpbIyuxG41zAj5kWLKtw2QI0nhtpwyLO4X_NdUDvVT7fpdeFtduIs1SX1SrfKd5rPuUSPTOarGA=s250",
+    "author": "zora",
+    "title": "Sora Light",
+    "state": "Available",
+    "maxDuration": 7,
+    "dailyPrice": 1,
+    "collateralPrice": 15,
+    "priceUnit": "ETH",
+    "describe": ""
+  },
+  {
+    "imagePath": "https://lh3.googleusercontent.com/TztKdQ2ilX_yT2y4R_znt0D8WFgWTz2sGebZqkarpxKaVB8Pm1jrq9M_hAZtASqXXpeSa4a0DSa67ezUBkSlgqI3AfTiPhVjF9krlA=s250",
+    "author": "sno-demon",
+    "title": "Sno Demon #2735",
+    "state": "Available",
+    "maxDuration": 7,
+    "dailyPrice": 0.05,
+    "collateralPrice": 0.135,
+    "priceUnit": "ETH",
+    "describe": "Sno Demons are the companions to SuperYeti. Even though the Sno Demons are smaller than the Yeti they are ferocious beasts that often protect the yeti as the two have formed an symbiotic relationship. Each Sno Demon is unique and holds the key to future breeding in the Yetiverse."
+  },
+  {
+    "imagePath": "https://lh3.googleusercontent.com/HIZmlJNUf15W_0kLK-t_3obYvd5TiQh4JOjIjk9pGIPl0eP55eGiKLLRXo3Hm5ouMQSB9dpS2LnxTQeuJv4t8rMsKkJs0v59sffseg=s250",
+    "author": "a0k1verse-passport",
+    "title": "Passport #1125",
+    "state": "Available",
+    "maxDuration": 7,
+    "dailyPrice": 0.07,
+    "collateralPrice": 0.2,
+    "priceUnit": "ETH",
+    "describe": ""
+  }
+];
+
+export const rentData = [
+  {
+    "imagePath": "https://lh3.googleusercontent.com/NBG-M-DV87izSgwhJYfHBBje9xQTugLLzTBPRoLLOmI3ScJ2tv69IDLiNkZjHKyr1kI1LO80S6rnUdeidsclQUoyj7a0MbGKIiIWHds=s250",
+    "author": "zora",
+    "title": "Misaka",
+    "state": "Available",
+    "maxDuration": 7,
+    "dailyPrice": 1,
+    "collateralPrice": 15,
+    "priceUnit": "ETH",
+    "describe": ""
+  },
+  {
+    "imagePath": "https://lh3.googleusercontent.com/HMdoJBZJAcKDq6ysKupaWgIX8X4VBpbIyuxG41zAj5kWLKtw2QI0nhtpwyLO4X_NdUDvVT7fpdeFtduIs1SX1SrfKd5rPuUSPTOarGA=s250",
+    "author": "zora",
+    "title": "Sora Light",
+    "state": "Available",
+    "maxDuration": 7,
+    "dailyPrice": 1,
+    "collateralPrice": 15,
+    "priceUnit": "ETH",
+    "describe": ""
+  },
+  {
+    "imagePath": "https://lh3.googleusercontent.com/TztKdQ2ilX_yT2y4R_znt0D8WFgWTz2sGebZqkarpxKaVB8Pm1jrq9M_hAZtASqXXpeSa4a0DSa67ezUBkSlgqI3AfTiPhVjF9krlA=s250",
+    "author": "sno-demon",
+    "title": "Sno Demon #2735",
+    "state": "Available",
+    "maxDuration": 7,
+    "dailyPrice": 0.05,
+    "collateralPrice": 0.135,
+    "priceUnit": "ETH",
+    "describe": "Sno Demons are the companions to SuperYeti. Even though the Sno Demons are smaller than the Yeti they are ferocious beasts that often protect the yeti as the two have formed an symbiotic relationship. Each Sno Demon is unique and holds the key to future breeding in the Yetiverse."
+  },
+  {
+    "imagePath": "https://lh3.googleusercontent.com/HIZmlJNUf15W_0kLK-t_3obYvd5TiQh4JOjIjk9pGIPl0eP55eGiKLLRXo3Hm5ouMQSB9dpS2LnxTQeuJv4t8rMsKkJs0v59sffseg=s250",
+    "author": "a0k1verse-passport",
+    "title": "Passport #1125",
+    "state": "Available",
+    "maxDuration": 7,
+    "dailyPrice": 0.07,
+    "collateralPrice": 0.2,
+    "priceUnit": "ETH",
+    "describe": ""
+  }
+];

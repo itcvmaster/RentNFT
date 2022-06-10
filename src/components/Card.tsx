@@ -111,8 +111,6 @@ export const LendCard: React.FC<any> = (props: any) => {
             imagePath={props.imagePath}
             title={props.title}
             author={props.author}
-            lenderAdd={props.lenderAdd}
-            contractAdd={props.contractAdd}
             describe={props.describe}
             setConfirm={setConfirm}
           />}

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useMoralis } from 'react-moralis';
-import data from 'utils/testData.json'
+import { walletData as data} from 'utils/testData';
 import { LendCard } from 'components';
 
 const Lend: React.FC<any> = () => {
@@ -15,8 +15,6 @@ const Lend: React.FC<any> = () => {
             imagePath={_data.imagePath}
             title={_data.title}
             author={_data.author}
-            lenderAdd={_data.lenderAdd}
-            contractAdd={_data.contractAdd}
             describe={_data.describe}
           />
         ))}
