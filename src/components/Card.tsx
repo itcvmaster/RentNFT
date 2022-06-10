@@ -1,208 +1,110 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useMoralis } from 'react-moralis';
+import { useDispatch } from 'react-redux';
 
 import { Icon15x15 } from './Icon';
 import Modal from './Modals';
 import { tablet, mobile, mobileSmall } from 'utils'
-import RentingDetail from './Modals/RentingDetail';
-import LendSetting from './Modals/LendSetting';
-import PayBackSetting from './Modals/PayBackSetting';
+import NFTDetail from './Modals/NFTDetail';
 import ConfirmWindow from 'components/Modals/ConfirmWindow'
+import { Actions } from 'store/types';
 
-export const MarketCard: React.FC<any> = (props: any) => {
-  const { imagePath, title, author, maxDuration, dailyPrice, collateralPrice, priceUnit, lenderAdd, contractAdd, state, describe } = props;
+export const DefaultCard: React.FC<any> = (props: any) => {
+  const { action, data, dataIndex, onClick } = props;
+
   let [showModal, setShowModal] = useState(false);
   let [confirm, setConfirm] = useState(false);
   const { isAuthenticated } = useMoralis();
-  const onOK = () => {
+  const dispatch = useDispatch();
+  const text = action === Actions.BUY_NFT ?
+    (isAuthenticated ? "Rented Sucessfully!" : "Please connect to your Wallet.") :
+    (action === Actions.LEND_NFT ? "Lended Sucessfully!" : "Returned Sucessfully!")
+
+  const clickOk = () => {
+    switch (action) {
+      case Actions.BUY_NFT: {
+        if (isAuthenticated)
+          dispatch({ type: Actions.BUY_NFT, title: data.title });
+        break;
+      }
+      case Actions.LEND_NFT: {
+        dispatch({ type: Actions.LEND_NFT, dataIndex: dataIndex });
+        break;
+      }
+      case Actions.PAYBACK_NFT: {
+        dispatch({ type: Actions.PAYBACK_NFT, dataIndex: dataIndex });
+        break;
+      }
+    }
     setConfirm(false);
-    setShowModal(false);
   }
+
   return (
     <Container>
       <CardBody>
         <Img
-          src={imagePath}
-          onClick={() => setShowModal(true)}
+          src={data.imagePath}
+          onClick={() => {
+            if (action !== "collections") setShowModal(true);
+            else onClick();
+          }}
         />
         <Content>
-          <Title>{title}</Title>
-          <Line>{author}</Line>
-          <Line>
-            Daily Price
-            <div>
-              {dailyPrice}
-              {priceUnit}
-            </div>
-          </Line>
-          <Line>
-            Collateral
-            <div>
-              {collateralPrice}
-              {priceUnit}
-            </div>
-          </Line>
-          <Line>
-            {state}
-          </Line>
-        </Content>
-      </CardBody>
-      <Modal
-        showModal={showModal}
-        setShowModal={setShowModal}
-        content={<RentingDetail
-          setShowModal={setShowModal}
-          imagePath={imagePath}
-          title={title}
-          author={author}
-          maxDuration={maxDuration}
-          dailyPrice={dailyPrice}
-          collateralPrice={collateralPrice}
-          priceUnit={priceUnit}
-          lenderAdd={lenderAdd}
-          contractAdd={contractAdd}
-          state={state}
-          describe={describe}
-          setConfirm={setConfirm}
-        />}
-      />
-      <Modal
-        showModal={confirm}
-        setShowModal={setConfirm}
-        content={
-          <ConfirmWindow
-            text={isAuthenticated ? "Rented Sucessfully!" : "Please connect to your Wallet."}
-            setConfirm={setConfirm}
-            onClose={onOK}
-          />}
-      />
-    </Container >
-  );
-}
-export const CollectionCard: React.FC<any> = (props: any) => {
-  const { imagePath, author, onClick } = props;
-  return (
-    <Container>
-      <CardBody>
-        <Img
-          src={imagePath}
-          onClick={onClick}
-        />
-        <Content>
-          <Title>{author}</Title>
-          <Opensea
-            href={"https://opensea.io/collection/" + author.toLowerCase()}
+          <Title>{action === "collections" ? data.author : data.title}</Title>
+          {action === Actions.BUY_NFT && <Detail>
+            <Line>{data.author}</Line>
+            <Line>
+              Daily Price
+              <div>
+                {data.dailyPrice}
+                {data.priceUnit}
+              </div>
+            </Line>
+            <Line>
+              Collateral
+              <div>
+                {data.collateralPrice}
+                {data.priceUnit}
+              </div>
+            </Line>
+            <Line>
+              {data.state}
+            </Line>
+          </Detail>}
+          {action === "collections" && <Opensea
+            href={"https://opensea.io/collection/" + data.author.toLowerCase()}
             target="_blank"
           >
             <Icon15x15 src="icons/opensea.svg" />
             <Line>View on OpenSea</Line>
-          </Opensea>
-        </Content>
-      </CardBody>
-    </Container >
-  );
-}
-export const LendCard: React.FC<any> = (props: any) => {
-  const { dataIndex, imagePath, title, author, describe } = props;
-  let [showModal, setShowModal] = useState(false);
-  let [confirm, setConfirm] = useState(false);
-  const onOK = () => {
-    setConfirm(false);
-    setShowModal(false);
-  }
-  return (
-    <Container>
-      <CardBody>
-        <Img
-          src={imagePath}
-          onClick={() => setShowModal(true)}
-        />
-        <Content>
-          <Title>{title}</Title>
+          </Opensea>}
         </Content>
       </CardBody>
       <Modal
         showModal={showModal}
-        setShowModal={setShowModal}
         content={
-          <LendSetting
-            dataIndex={dataIndex}
+          <NFTDetail
             setShowModal={setShowModal}
-            imagePath={imagePath}
-            title={title}
-            author={author}
-            describe={describe}
+            data={data}
             setConfirm={setConfirm}
-          />}
+            action={action}
+          />
+        }
       />
       <Modal
         showModal={confirm}
-        setShowModal={setConfirm}
-        content={<ConfirmWindow
-          text="Lended Sucessfully!"
-          setConfirm={setConfirm}
-          onClose={onOK}
-        />}
-      />
-    </Container >
-  );
-}
-export const PayBackCard: React.FC<any> = (props: any) => {
-  const { dataIndex, imagePath, title, author, maxDuration, dailyPrice, collateralPrice, priceUnit, lenderAdd, contractAdd, state, describe } = props;
-  let [showModal, setShowModal] = useState(false);
-  let [confirm, setConfirm] = useState(false);
-  const onOK = () => {
-    setConfirm(false);
-    setShowModal(false);
-  }
-  return (
-    <Container>
-      <CardBody>
-        <Img
-          src={imagePath}
-          onClick={() => setShowModal(true)}
-        />
-        <Content>
-          <Title>{title}</Title>
-        </Content>
-      </CardBody>
-      <Modal
-        showModal={showModal}
-        setShowModal={setShowModal}
-        content={
-          <PayBackSetting
-            setShowModal={setShowModal}
-            dataIndex={dataIndex}
-            imagePath={imagePath}
-            title={title}
-            author={author}
-            maxDuration={maxDuration}
-            rentDate={"6/6/2022"}
-            duration={3}
-            dailyPrice={dailyPrice}
-            collateralPrice={collateralPrice}
-            priceUnit={priceUnit}
-            lenderAdd={lenderAdd}
-            contractAdd={contractAdd}
-            state={state}
-            describe={describe}
-            setConfirm={setConfirm}
-          />}
-      />
-      <Modal
-        showModal={confirm}
-        setShowModal={setConfirm}
         content={
           <ConfirmWindow
-            text="Returned Sucessfully!"
-            setConfirm={setConfirm}
-            onClose={onOK}
-          />}
+            text={text}
+            onClick={clickOk}
+          />
+        }
       />
     </Container >
   );
 }
+
 const Container = styled.div`
   box-sizing: border-box;
   padding: 20px 10px;
@@ -234,7 +136,7 @@ const Img = styled.img`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   padding: 10px 20px 20px 20px;
   box-sizing: border-box;
 `
@@ -263,6 +165,10 @@ const Opensea = styled.a`
   gap: 5px;
   user-select: none;
 `
-
+const Detail = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`
 
 

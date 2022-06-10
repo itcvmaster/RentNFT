@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 
 import { mobileSmall } from 'utils'
 import { Icon50x50 } from "components/Icon";
-import { TextBlack, Text } from "./RentingDetail";
+import { TextBlack, Text } from "./NFTDetail";
 
 const ConnectWallet: React.FC<any> = (props) => {
 

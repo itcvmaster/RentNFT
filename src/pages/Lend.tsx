@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { useMoralis } from 'react-moralis';
 import { useSelector } from 'react-redux';
 
-import { LendCard } from 'components';
+import { DefaultCard } from 'components';
+import { Actions } from 'store/types';
 
 const Lend: React.FC<any> = () => {
   const data = useSelector((state: any) => state.myNFTs);
@@ -17,13 +18,11 @@ const Lend: React.FC<any> = () => {
             </span>
           </Text>}
         {isAuthenticated && data.map((_data: any, index: number) => (
-          <LendCard
+          <DefaultCard
             key={index}
+            action={Actions.LEND_NFT}
             dataIndex={index}
-            imagePath={_data.imagePath}
-            title={_data.title}
-            author={_data.author}
-            describe={_data.describe}
+            data={_data}
           />
         ))}
       </Content>

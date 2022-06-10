@@ -10,7 +10,7 @@ const ConfirmWindow: React.FC<any> = (props) => {
         <Text>{props.text}</Text>
         <Button 
           text="OK"
-          onClick={props.onClose}
+          onClick={props.onClick}
         />
       </Card>
     </Container>
@@ -21,12 +21,12 @@ export default ConfirmWindow;
 
 const Container = styled.div`
   width: 400px;
-  height: 200px;
+  max-height: 200px;
   display: block;
   box-shadow: 0 8px 36px #e4e4e4;
   background: var(--shade-8);
   overflow: auto;
-  border-radius: 18px;
+  border-radius: 32px;
   ${mobileSmall} {
     width: 100%;
   }
@@ -37,11 +37,10 @@ const Text = styled.div`
   color: var(--shade-4);
 `;
 const Card = styled.div`
-  cursor: pointer;
-  padding: 40px 20px;
+  padding: 30px 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 `

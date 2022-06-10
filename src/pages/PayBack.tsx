@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { useMoralis } from 'react-moralis';
 import { useSelector } from 'react-redux';
 
-import { PayBackCard } from 'components';
+import { DefaultCard } from 'components';
+import { Actions } from 'store/types';
 
 const PayBack: React.FC<any> = () => {
   const data = useSelector((state: any) => state.rentNFTs);
@@ -16,19 +17,12 @@ const PayBack: React.FC<any> = () => {
               Please connect to your Wallet.
             </span>
           </Text>}
-        {isAuthenticated && data.map((_data: any, index: number) => (
-          <PayBackCard
+          {isAuthenticated && data.map((_data: any, index: number) => (
+          <DefaultCard
             key={index}
+            action={Actions.PAYBACK_NFT}
             dataIndex={index}
-            imagePath={_data.imagePath}
-            title={_data.title}
-            author={_data.author}
-            maxDuration={_data.maxDuration}
-            dailyPrice={_data.dailyPrice}
-            collateralPrice={_data.collateralPrice}
-            priceUnit={_data.priceUnit}
-            state={_data.state}
-            describe={_data.describe}
+            data={_data}
           />
         ))}
       </Content>

@@ -104,22 +104,22 @@ const Filter: React.FC<any> = (props: any) => {
         setSearch={setSearch}
       />
       <FilterBar>
-        <Selector
+        {isMarket && <Selector
           selects={CollateralSelectNames}
           text="Collateral type"
           selectName={collateral}
           setSelectName={setCollateral}
           width="200px"
-        />
-        <Selector
+        />}
+        {isMarket && <Selector
           selects={StateSelectNames}
           text="State"
           selectName={tokenState}
           setSelectName={setTokenState}
           width="200px"
-        />
+        />}
         <Selector
-          selects={SortSelectNames}
+          selects={isMarket ? SortSelectNames : SortSelectNames.slice(0, 2).concat(SortSelectNames.slice(SortSelectNames.length - 2))}
           text="Sort By"
           selectName={sort}
           setSelectName={setSort}

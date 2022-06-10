@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { Filter, MarketCard } from 'components';
+import { Filter, DefaultCard } from 'components';
 import { useMemo, useState } from 'react';
+import { Actions } from 'store/types';
 
 const Market: React.FC<any> = () => {
   const data = useSelector((state: any) => state.marketNFTs);
@@ -33,19 +34,10 @@ const Market: React.FC<any> = () => {
       />
       <Content>
         {renderData.map((_data: any, index: number) => (
-          <MarketCard
+          <DefaultCard
             key={index}
-            imagePath={_data.imagePath}
-            title={_data.title}
-            author={_data.author}
-            maxDuration={_data.maxDuration}
-            dailyPrice={_data.dailyPrice}
-            collateralPrice={_data.collateralPrice}
-            priceUnit={_data.priceUnit}
-            lenderAdd={_data.lenderAdd}
-            contractAdd={_data.contractAdd}
-            state={_data.state}
-            describe={_data.describe}
+            action={Actions.BUY_NFT}
+            data={_data}
           />
         ))}
       </Content>

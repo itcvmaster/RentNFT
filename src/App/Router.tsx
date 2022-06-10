@@ -3,7 +3,6 @@ import { RouteObject, useRoutes } from 'react-router-dom';
 import {
   Market,
   Collections,
-  Admin,
   Lend,
   PayBack
 } from 'pages';
@@ -27,11 +26,6 @@ const routes: RouteObject[] = [
   {
     path: "/Collections/:id",
     element: <Market />,
-    children: [],
-  },
-  {
-    path: "/Admin",
-    element: <Admin />,
     children: [],
   },
   {

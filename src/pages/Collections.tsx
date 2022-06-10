@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { CollectionCard } from 'components';
+import { Filter, DefaultCard } from 'components';
 
 const Collections: React.FC<any> = () => {
   const data = useSelector((state: any) => state.marketNFTs);
@@ -19,14 +19,23 @@ const Collections: React.FC<any> = () => {
     }
     return newsArr;
   }, [data])
+  const [searchData, setSearchData] = useState(data);
+  const [filterData, setFilterData] = useState(collectionData);
   return (
     <Container>
+      <Filter
+        data={collectionData}
+        searchData={searchData}
+        setSearchData={setSearchData}
+        setFilterData={setFilterData}
+        isMarket={false}
+      />
       <Content>
-        {collectionData.map((_data, index) => (
-          <CollectionCard
+        {filterData.map((_data, index) => (
+          <DefaultCard
             key={index}
-            imagePath={_data.imagePath}
-            author={_data.author}
+            data={_data}
+            action="collections"
             onClick={() => navigate("/Collections/" + _data.author)}
           />
         ))}
@@ -37,7 +46,7 @@ const Collections: React.FC<any> = () => {
 
 const Container = styled.div`
   display: block;
-  padding: 20px 20px 50px 20px;
+  padding: var(--padding);
   padding-bottom: 50px;
   box-sizing: border-box;
 `

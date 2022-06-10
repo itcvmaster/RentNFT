@@ -1,24 +1,20 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { useMoralis } from 'react-moralis';
 
 import { Icon30x30 } from '../Icon';
 import { Button, Input } from "components";
 import { mobile } from 'utils'
 import { Actions } from "store/types";
 
-const RentingDetail: React.FC<any> = (props) => {
-  const { setShowModal, imagePath, title, author, maxDuration, dailyPrice, collateralPrice, priceUnit, lenderAdd, contractAdd, state, describe, setConfirm } = props;
+const NFTDetail: React.FC<any> = (props) => {
+  const { setShowModal, data, setConfirm, action } = props;
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { isAuthenticated } = useMoralis();
 
   return (
     <Container>
       <Title>
         <Icon30x30 src="icons/logo.svg" />
-        <Span>Renting Details</Span>
+        <Span>Settings</Span>
         <Icon30x30
           src="icons/close.svg"
           onClick={() => setShowModal(false)}
@@ -26,62 +22,97 @@ const RentingDetail: React.FC<any> = (props) => {
       </Title>
       <Content>
         <Section>
-          <Img src={imagePath} />
+          <Img src={data.imagePath} />
         </Section>
         <Section>
           <Block>
             <Lender>
-              <Text>{lenderAdd ? "Lender" : ""}</Text>
+              <Text>{data.lenderAdd ? "Lender" : ""}</Text>
               <A
-                href={lenderAdd ? "https://etherscan.io/address/" + lenderAdd : ""}
+                href={data.lenderAdd ? "https://etherscan.io/address/" + data.lenderAdd : ""}
                 target="_blank"
               >
-                {lenderAdd ? lenderAdd.slice(0, 5) + "..." + lenderAdd.slice(lenderAdd.length - 3) : ""}
+                {data.lenderAdd ? data.lenderAdd.slice(0, 5) + "..." + data.lenderAdd.slice(data.lenderAdd.length - 3) : ""}
               </A>
             </Lender>
             <TextClick
               onClick={() => {
-                navigate("/Collections/" + author)
-                setShowModal(false)
+                if (action === Actions.BUY_NFT) {
+                  navigate("/Collections/" + data.author)
+                  setShowModal(false)
+                }
               }}
             >
-              {author}
+              {data.author}
             </TextClick>
-            <TextBlack>{title}</TextBlack>
+            <TextBlack>{data.title}</TextBlack>
             <A
-              href={contractAdd ? "https://etherscan.io/address/" + contractAdd : ""}
+              href={data.contractAdd ? "https://etherscan.io/address/" + data.contractAdd : ""}
               target="_blank"
             >
-              {contractAdd ? contractAdd.slice(0, 5) + "..." + contractAdd.slice(contractAdd.length - 3) : ""}
+              {data.contractAdd ? data.contractAdd.slice(0, 5) + "..." + data.contractAdd.slice(data.contractAdd.length - 3) : ""}
             </A>
-            <Text>{describe}</Text>
+            <Text>{data.describe}</Text>
           </Block>
-          <Block>
+          {action === Actions.BUY_NFT && <Block>
             <Input
               title="Rent Duration"
               unit="Days"
             />
             <Line>
               <Text>Max Duration</Text>
-              <Text>{maxDuration} Days</Text>
+              <Text>{data.maxDuration} Days</Text>
             </Line>
             <Line>
               <Text>Daily price</Text>
-              <Text>{dailyPrice} {priceUnit}</Text>
+              <Text>{data.dailyPrice} {data.priceUnit}</Text>
             </Line>
             <Line>
               <Text>Collateral</Text>
-              <Text>{collateralPrice} {priceUnit}</Text>
+              <Text>{data.collateralPrice} {data.priceUnit}</Text>
             </Line>
-          </Block>
+          </Block>}
+          {action === Actions.LEND_NFT && <Block>
+            <Input
+              title="Max Duration"
+              unit="Days"
+            />
+            <Input
+              title="Daily price"
+              unit="ETH"
+            />
+            <Input
+              title="Collateral"
+              unit="ETH"
+            />
+          </Block>}
+          {action === Actions.PAYBACK_NFT && <Block>
+            <Line>
+              <Text>Rent Date</Text>
+              <Text>{data.rentDate}</Text>
+            </Line>
+            <Line>
+              <Text>Duration</Text>
+              <Text>{data.maxDuration} Days</Text>
+            </Line>
+            <Line>
+              <Text>Daily Price</Text>
+              <Text>{data.dailyPrice} {data.priceUnit}</Text>
+            </Line>
+            <Line>
+              <Text>Collateral Price</Text>
+              <Text>{data.collateralPrice} {data.priceUnit}</Text>
+            </Line>
+            <Line>
+              <Text>Total Amount</Text>
+              <Text>{data.maxDuration * data.dailyPrice} {data.priceUnit}</Text>
+            </Line>
+          </Block>}
           <Button
-            text="Rent Now"
-            disabled={state === "Rented"}
+            text="OK"
+            disabled={data.state === "Rented"}
             onClick={() => {
-              if (isAuthenticated) {
-                dispatch({ type: Actions.BUY_NFT, title: title });
-                setShowModal(false);
-              }
+              setShowModal(false);
               setConfirm(true);
             }}
           />
@@ -91,7 +122,7 @@ const RentingDetail: React.FC<any> = (props) => {
   )
 }
 
-export default RentingDetail;
+export default NFTDetail;
 
 const Container = styled.div`
   width: 90%;

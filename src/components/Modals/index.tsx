@@ -9,7 +9,6 @@ const Modal: React.FC<any> = (props) => {
       <ModalStyles />
       <ReactModal
         isOpen={props.showModal}
-        onRequestClose={() => props.setShowModal(false)}
         overlayClassName="myoverlay"
         className="mycontent"
       >

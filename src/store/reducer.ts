@@ -23,7 +23,6 @@ export function reducer(state: IState = initState, action: any): IState {
     }
 
     case Actions.LEND_NFT: {
-      console.log("Lended Sucessfully");
       const newMarketNFTs = [state.myNFTs[action.dataIndex], ...state.marketNFTs];
       const newMyNFTs: any[] = [];
       state.myNFTs.forEach((_data, index) => {
@@ -34,11 +33,11 @@ export function reducer(state: IState = initState, action: any): IState {
         marketNFTs: newMarketNFTs,
         myNFTs: newMyNFTs
       };
+      console.log("Lended Sucessfully");
       break;
     }
 
     case Actions.PAYBACK_NFT: {
-      console.log("PayBack Sucessfully");
       const newMarketNFTs = [state.rentNFTs[action.dataIndex], ...state.marketNFTs];
       const newRentNFTs: any[] = [];
       state.rentNFTs.forEach((_data, index) => {
@@ -49,11 +48,11 @@ export function reducer(state: IState = initState, action: any): IState {
         marketNFTs: newMarketNFTs,
         rentNFTs: newRentNFTs
       };
+      console.log("PayBack Sucessfully");
       break;
     }
 
     case Actions.BUY_NFT: {
-      console.log("Buy Sucessfully");
       const dataIndex = returnIndex(state.marketNFTs, action.title);
       const newMarketNFTs: any[] = [];
       state.marketNFTs.forEach((_data, index) => {
@@ -65,6 +64,7 @@ export function reducer(state: IState = initState, action: any): IState {
         marketNFTs: newMarketNFTs,
         rentNFTs: newRentNFTs
       };
+      console.log("Rented Sucessfully");
       break;
     }
   }
