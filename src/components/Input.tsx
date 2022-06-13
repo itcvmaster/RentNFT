@@ -8,7 +8,7 @@ export const Input: React.FC<any> = (props) => {
       </Title>
       <Content>
         <InputStyle
-          onChange={(e) => props.onChange(e.target.value)}
+          onChange={props.onChange}
           placeholder={props.holder}
           value={props.value}
           type={props.type}
