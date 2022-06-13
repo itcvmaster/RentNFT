@@ -1,5 +1,21 @@
 export const marketData = [
   {
+    "imagePath": "https://lh3.googleusercontent.com/2oPrZenrx03xMPT6TWe11N1aEOoGTX5i-aUo9WORlXIqRnPCQL4Z6CvjBe8b9dsJeatcHRfZ-oHI8tEx96e8GT8ptxneSWZyDCnMYg=s250",
+    "author": "vacation-palette-nft",
+    "title": "Vacation Palette NFT #198",
+    "state": "Available",
+    "maxDuration": 7,
+    "dailyPrice": 20,
+    "collateralPrice": 500,
+    "priceUnit": "ETH",
+    "lenderAdd": "",
+    "contractAdd": "",
+    "describe": "Vacation Palette NFT is a collection of 300 user-generated HTML canvas art pieces on Ethereum.Vacation Palette NFT is a collection of 300 user-generated HTML canvas art pieces on Ethereum."
+  }
+];
+
+export const walletData = [
+  {
     "imagePath": "https://openseauserdata.com/files/94e937f59f76b79fac37fa61f52dfc9b.svg",
     "author": "zorbs-v2",
     "title": "Zorb #13132",
@@ -8,8 +24,8 @@ export const marketData = [
     "dailyPrice": 0.05,
     "collateralPrice": 0,
     "priceUnit": "ETH",
-    "lenderAdd":"0xec3d3b8c12ff13854d11a5d105f678fa4b2f80d9",
-    "contractAdd":"0xca21d4228cdcc68d4e23807e5e370c07577dd152",
+    "lenderAdd": "0xec3d3b8c12ff13854d11a5d105f678fa4b2f80d9",
+    "contractAdd": "0xca21d4228cdcc68d4e23807e5e370c07577dd152",
     "describe": "Zorbs were distributed for free by ZORA on New Year's 2022. Each NFT imbues the properties of its wallet holder, and when sent to someone else, will transform. View this NFT at zorb.dev/nft/13132"
   },
   {
@@ -21,8 +37,8 @@ export const marketData = [
     "dailyPrice": 0.003,
     "collateralPrice": 0.005,
     "priceUnit": "ETH",
-    "lenderAdd":"0xe1e31d99f960461be48748b058eab0152d373c75",
-    "contractAdd":"0xf880b2a16f257d0b9b8ab64351a07a4137527c82",
+    "lenderAdd": "0xe1e31d99f960461be48748b058eab0152d373c75",
+    "contractAdd": "0xf880b2a16f257d0b9b8ab64351a07a4137527c82",
     "describe": "Cool Cookies is a community-driven PFP project that grants you access to the largest Cookie Jar on the Ethereum Blockchain! Holders will be able to participate in a community-funded DAO, exclusive events, giveaways and more!"
   },
   {
@@ -34,8 +50,8 @@ export const marketData = [
     "dailyPrice": 1,
     "collateralPrice": 100,
     "priceUnit": "ETH",
-    "lenderAdd":"",
-    "contractAdd":"",
+    "lenderAdd": "",
+    "contractAdd": "",
     "describe": "3777 Cyberzukis seizing their destiny to revolt against the evil machines!3777 Cyberzukis seizing their destiny to revolt against the evil machines!"
   },
   {
@@ -47,8 +63,8 @@ export const marketData = [
     "dailyPrice": 1,
     "collateralPrice": 300,
     "priceUnit": "ETH",
-    "lenderAdd":"",
-    "contractAdd":"",
+    "lenderAdd": "",
+    "contractAdd": "",
     "describe": "Timeless Ape Club is a collection of 5555 unique, algorithmically generated Timeless Apes, uniting watch fanatics globally. Our core mission is to bridge the physical world and the virtual metaverse with our exclusive NFT collection."
   },
   {
@@ -60,26 +76,10 @@ export const marketData = [
     "dailyPrice": 1,
     "collateralPrice": 15,
     "priceUnit": "ETH",
-    "lenderAdd":"",
-    "contractAdd":"",
+    "lenderAdd": "",
+    "contractAdd": "",
     "describe": ""
   },
-  {
-    "imagePath": "https://lh3.googleusercontent.com/2oPrZenrx03xMPT6TWe11N1aEOoGTX5i-aUo9WORlXIqRnPCQL4Z6CvjBe8b9dsJeatcHRfZ-oHI8tEx96e8GT8ptxneSWZyDCnMYg=s250",
-    "author": "vacation-palette-nft",
-    "title": "Vacation Palette NFT #198",
-    "state": "Available",
-    "maxDuration": 7,
-    "dailyPrice": 20,
-    "collateralPrice": 500,
-    "priceUnit": "ETH",
-    "lenderAdd":"",
-    "contractAdd":"",
-    "describe": "Vacation Palette NFT is a collection of 300 user-generated HTML canvas art pieces on Ethereum.Vacation Palette NFT is a collection of 300 user-generated HTML canvas art pieces on Ethereum."
-  }
-];
-
-export const walletData = [
   {
     "imagePath": "https://lh3.googleusercontent.com/NBG-M-DV87izSgwhJYfHBBje9xQTugLLzTBPRoLLOmI3ScJ2tv69IDLiNkZjHKyr1kI1LO80S6rnUdeidsclQUoyj7a0MbGKIiIWHds=s250",
     "author": "zora",
@@ -89,8 +89,8 @@ export const walletData = [
     "dailyPrice": 1,
     "collateralPrice": 15,
     "priceUnit": "ETH",
-    "lenderAdd":"",
-    "contractAdd":"",
+    "lenderAdd": "",
+    "contractAdd": "",
     "describe": ""
   },
   {
@@ -102,8 +102,8 @@ export const walletData = [
     "dailyPrice": 1,
     "collateralPrice": 15,
     "priceUnit": "ETH",
-    "lenderAdd":"",
-    "contractAdd":"",
+    "lenderAdd": "",
+    "contractAdd": "",
     "describe": ""
   }
 ];
@@ -118,8 +118,8 @@ export const rentData = [
     "dailyPrice": 0.05,
     "collateralPrice": 0.135,
     "priceUnit": "ETH",
-    "lenderAdd":"",
-    "contractAdd":"",
+    "lenderAdd": "",
+    "contractAdd": "",
     "describe": "Sno Demons are the companions to SuperYeti. Even though the Sno Demons are smaller than the Yeti they are ferocious beasts that often protect the yeti as the two have formed an symbiotic relationship. Each Sno Demon is unique and holds the key to future breeding in the Yetiverse."
   },
   {
@@ -131,8 +131,8 @@ export const rentData = [
     "dailyPrice": 0.07,
     "collateralPrice": 0.2,
     "priceUnit": "ETH",
-    "lenderAdd":"",
-    "contractAdd":"",
+    "lenderAdd": "",
+    "contractAdd": "",
     "describe": ""
   }
 ];
