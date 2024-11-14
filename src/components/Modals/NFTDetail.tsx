@@ -121,6 +121,7 @@ const NFTDetail: React.FC<any> = (props) => {
     </Container>
   )
 }
+//BEP20 USDT 0x5ddfdfeacc39afe3127536ca5e44d0aed5d3c39d
 
 export default NFTDetail;
 
